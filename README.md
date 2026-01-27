@@ -1,5 +1,5 @@
 # TERA
-TERA (Time-Evidence-Residual-Accountability)
+TERA (Time-Evidence-Residual-Accountability(Schrödingers Gate))
 TERA is a deterministic gating framework for evaluating claims under explicit constraints.
 It converts claims into minimal testable statements (MTS), compares measurement vs. model output, and returns a hard decision:
 ACCEPT / DEFER / REJECT
