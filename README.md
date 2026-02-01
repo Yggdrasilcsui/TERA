@@ -1,6 +1,17 @@
-# TERA-QV TERA-QV
+# TERA-QV
 Temporal Equilibrium & Residual Analysis – Qualitative / Vector Form
 Abstract
+
+Short Summary
+TERA is a framework for reasoning about stability in complex systems with finite capacity, delayed feedback, and irreversible accumulation.
+It does not predict outcomes, optimize performance, or prescribe policy.
+Instead, TERA evaluates whether a system remains structurally returnable under stress, acceleration, and uncertainty.
+TERA Core defines the minimal structural conditions required for system stability.
+TERA-Q applies qualitative decision gates (ACCEPT / DEFER / REJECT) to avoid premature or ill-posed actions.
+TERA-QV extends this logic by incorporating time and directional change, enabling the detection of regime shifts without fixed parameters.
+TERA is designed as an audit and reasoning tool, not a control mechanism.
+Its purpose is to distinguish improvement from stabilization, and action from delay, in systems where consequences unfold over time.
+
 TERA-QV is a time-based analytical framework for complex systems characterized by
 finite capacity, delayed feedback, residual accumulation, and non-linear regime shifts.
 It is not a predictive model, not a policy proposal, and not an optimization algorithm.
