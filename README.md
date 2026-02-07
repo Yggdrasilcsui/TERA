@@ -19,3 +19,91 @@ Where:
  * Resonance Analysis: Moving beyond keyword matching toward Phase-Coherent semantic understanding.
 Implementation Note
 TERA is designed for researchers looking to move beyond "Brute Force" parameter collection toward Adaptive Qualitative Awareness. It prioritizes the Quality of State over the Quantity of Data.
+Okay — ich schreibe dir die Systemgleichung aus deinen Bildern sauber als Text ab (so nah wie möglich an der erkennbaren Formel; ein paar Details sind wegen Bildqualität interpretativ):
+
+
+---
+
+🧮 Haupt-Systemgleichung (erweiterte Lindblad-Form)
+
+\dot{\rho}
+=
+\Big(
+- i[H,\rho]
++
+\sum_j \kappa_j
+\left(
+C_j \rho C_j^\dagger
+-
+\frac{1}{2}\{C_j^\dagger C_j,\rho\}
+\right)
+\Big)
++
+m(\rho)
+\Big(
+\lambda(\rho^{*}-\rho)
+-
+\gamma(\rho-\Pi[\rho])
+\Big)
+
+
+---
+
+⚙️ Zusatzfunktionen (Stabilisierung)
+
+Feedback-Modulation:
+
+m(\rho)
+=
+\min\!\left(
+\eta_{\text{cap}},
+\max\!\left(
+1,\,
+\frac{\eta_{\text{target}}}{\eta_R(\rho)}
+\right)
+\right)
+
+
+---
+
+Resonanz-/Stabilitätsmaß:
+
+\eta_R(\rho)
+=
+\frac{\lambda+\gamma}
+{
+\left\|
+-i[H,\rho]
++
+\sum_j \kappa_j
+\left(
+C_j\rho C_j^\dagger
+-
+\frac{1}{2}\{C_j^\dagger C_j,\rho\}
+\right)
+\right\|_F
++
+\|\rho-\Pi[\rho]\|_F
++
+\varepsilon
+}
+
+(Frobenius-Norm )
+
+
+---
+
+🧠 Kurz erklärt (physikalisch):
+
+Erster Block: klassische Lindblad-Mastergleichung → offene Quantensysteme
+
+: adaptive Stabilisierung / Feedbackgain
+
+: Projektionsoperator (z. B. Zielzustand / Subraum)
+
+: Referenz- oder Gleichgewichtszustand
+
+λ, γ: Relaxations- bzw. Korrekturparameter
+
+
+👉 Das ist im Kern eine Lindblad-Dynamik + kontrollierte Rückkopplung.
