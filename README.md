@@ -1,6 +1,22 @@
 
 
 TERA – Temporal Entropy & Resource Alignment
+## Design Intent
+
+TERA is not designed to produce predictions by narrative extrapolation.
+It is designed to reduce structural blind spots.
+
+TERA enforces:
+
+• temporal accountability (no state without time)
+• double-entry informational bookkeeping (no gain without counterbalance)
+• explicit threshold logic (no uncontrolled coupling)
+• bounded drift under uncertainty
+
+TERA does not generate truth.
+It constrains the space in which false stability can survive.
+
+Its purpose is epistemic discipline under physical constraints.
 
 A nonlinear dynamic information balance framework
 
@@ -308,3 +324,36 @@ TERA does not moralize.
 
 It detects when a system exits its stability manifold.
 
+
+## Methodological Position
+
+TERA operates at the interface between:
+
+• control theory  
+• information theory  
+• nonlinear dynamical systems  
+• statistical state estimation  
+
+It does not replace domain-specific models.
+It provides a consistency layer above them.
+
+TERA asks:
+
+Can this system close its informational loops?
+Are dissipation and correction balanced?
+Are thresholds explicit?
+Is drift bounded?
+
+If yes → structural stability is plausible.  
+If no → instability is structurally encoded.
+
+TERA is therefore best understood as:
+
+a recursive stability debugger  
+for physical and informational systems.
+
+No metaphysics.  
+No numerology.  
+No moral narrative.  
+
+Only constrained evolution under time.
