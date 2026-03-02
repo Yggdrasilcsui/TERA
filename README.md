@@ -122,110 +122,87 @@ s_n
 
 Decision rule:
 
-ACCEPT: 
-
-WAIT: 
-
-REJECT: 
-
-
-WAIT is an explicit non-decision state.
-
-
----
-
-7. Core Update Law
-
-\rho_{n+1}
-=
-\rho_n
-+
-\Delta t_n
-\left[
-\mathcal{L}(\rho_n)
-+
-m(\rho_n)
-+
-\eta_n
-(
-\lambda(\rho^\star - \rho_n)
-+
-\gamma(\rho_n - \Pi(\rho_n))
-)
-\right]
-
-This describes:
-
-intrinsic drift
-
-adaptive correction
-
-structural projection
-
-threshold-regulated coupling
-
-
-
----
-
-8. What TERA Is
-
-TERA is:
-
-a stability classifier
-
-a bounded-drift auditor
-
-a recursive model-consistency checker
-
-a meta-framework for scientific inference
-
-
-
----
-
-9. What TERA Is Not
-
-TERA does not:
-
-introduce new physics
-
-replace thermodynamics
-
-predict outcomes
-
-claim universal truth
-
-
-TERA evaluates structural stability of models.
-
-
----
-
-10. Intended Applications
-
-AI decision systems
-
-model auditing
-
-climate model robustness
-
-safety-critical control systems
-
-high-dimensional inference
-
-epistemic uncertainty classification
-
-
-
----
-
-11. Minimal Interpretation
-
-TERA answers:
-
+TERA
+Temporal Entropy & Resource Alignment
+Overview
+TERA is a meta-level framework for evaluating informational stability in nonlinear stochastic systems.
+It does not introduce new physics.
+It does not replace domain models.
+TERA operates on belief representations of physical systems and evaluates whether their informational drift remains structurally bounded over time.
+TERA is a stability auditing layer above existing models.
+Core Question
+TERA asks:
 Is informational drift bounded under admissible context Γ?
-
+If yes → structural stability is plausible.
+If no → instability is structurally encoded in the model representation.
+System Assumptions
+We assume a nonlinear stochastic state-space system:
+Where:
+�: physical state
+�: control input
+�: observation
+�: noise
+TERA does not regulate the physical state �.
+TERA evaluates the informational representation of that state.
+Informational State
+Define belief:
+Belief update:
+TERA operates on �, not directly on �.
+Informational Energy Functional
+Define stability functional:
+Components:
+�: deviation from reference belief
+�: entropy (uncertainty)
+�: structural constraint violation
+�: weighting parameters
+This functional quantifies:
+• deviation
+• uncertainty
+• structural stress
+Bounded Drift Condition
+Define informational drift:
+Stability requires:
+This is a Lyapunov-type bounded drift condition.
+TERA evaluates whether informational instability accelerates.
+Decision Gate
+Define system tension:
+Decision states:
+ACCEPT → normal coupling
+WAIT → damped evolution
+REJECT → decoupling
+WAIT is an explicit non-decision state.
+TERA formalizes threshold-based intervention under uncertainty.
+Core Update Law
+This describes:
+intrinsic drift
+adaptive correction
+structural projection
+threshold-regulated coupling
+What TERA Is
+TERA is:
+a stability classifier
+a bounded-drift auditor
+a recursive model-consistency checker
+a meta-framework for inference under uncertainty
+What TERA Is Not
+TERA does not:
+introduce new physical laws
+replace thermodynamics
+predict specific outcomes
+claim universal truth
+TERA evaluates informational structure, not reality itself.
+Intended Applications
+AI decision systems
+model auditing
+safety-critical control
+climate model robustness analysis
+high-dimensional inference
+epistemic uncertainty classification
+Minimal Interpretation
+TERA provides a structured answer to:
+Does this model maintain bounded informational drift over time?
+If yes → stability is structurally plausible.
+If no → instability is encoded in the representation.
 
 Pseudocode:
 
