@@ -1,0 +1,320 @@
+{
+  "glossary": {
+    "id": "tera_glossary",
+    "label": "TERA Glossary",
+    "version": "0.1.0",
+    "status": "draft_public",
+    "description": "Machine-readable glossary of core TERA terms for human interpretation, code mapping, and later parser or notebook use."
+  },
+  "terms": [
+    {
+      "id": "term_signal",
+      "label": "Signal",
+      "category": "classification",
+      "definition": "A viable, correctly coupled trace.",
+      "short_definition": "Correctly coupled meaningful trace.",
+      "contrast_with": [
+        "term_noise",
+        "term_artifact"
+      ],
+      "notes": [
+        "Signal is not mere visibility.",
+        "Signal must remain structurally meaningful under context variation."
+      ]
+    },
+    {
+      "id": "term_noise",
+      "label": "Noise",
+      "category": "classification",
+      "definition": "An unstable or undirected disturbance.",
+      "short_definition": "Unstable or directionless disturbance.",
+      "contrast_with": [
+        "term_signal",
+        "term_artifact"
+      ],
+      "notes": [
+        "Noise reduces readability without necessarily creating a false structure.",
+        "Noise may still contain latent information when context improves."
+      ]
+    },
+    {
+      "id": "term_artifact",
+      "label": "Artifact",
+      "category": "classification",
+      "definition": "A stable but falsely coupled false trace.",
+      "short_definition": "Stable but wrongly coupled false trace.",
+      "contrast_with": [
+        "term_signal",
+        "term_noise"
+      ],
+      "notes": [
+        "Artifacts often look more convincing than noise.",
+        "Artifacts emerge through method, interpretation, or hidden coupling errors."
+      ]
+    },
+    {
+      "id": "term_drift",
+      "label": "Drift",
+      "category": "dynamics",
+      "definition": "State displacement without complete return-flow.",
+      "short_definition": "Shift without full return-flow.",
+      "related_to": [
+        "term_transition",
+        "term_resonance"
+      ],
+      "notes": [
+        "Drift may be slow, cumulative, and initially hard to detect.",
+        "Drift is not yet collapse, but can prepare threshold crossings."
+      ]
+    },
+    {
+      "id": "term_resonance",
+      "label": "Resonance",
+      "category": "coupling",
+      "definition": "A connectable coupling of information, energy, and effect.",
+      "short_definition": "Connectable coupling of information, energy, and effect.",
+      "related_to": [
+        "term_drift",
+        "term_threshold",
+        "term_responsibility"
+      ],
+      "notes": [
+        "Resonance is not mysticism in TERA.",
+        "Resonance describes meaningful propagation across connected structures."
+      ]
+    },
+    {
+      "id": "term_threshold",
+      "label": "Threshold",
+      "category": "transition_boundary",
+      "definition": "A qualitative tipping edge of a state.",
+      "short_definition": "Qualitative tipping edge.",
+      "related_to": [
+        "term_regime",
+        "term_transition"
+      ],
+      "notes": [
+        "A threshold is not just more intensity.",
+        "A threshold marks where the system ceases to be 'more of the same'."
+      ]
+    },
+    {
+      "id": "term_regime",
+      "label": "Regime",
+      "category": "order_form",
+      "definition": "The carrying order-form of a system.",
+      "short_definition": "Carrying order-form of a system.",
+      "related_to": [
+        "term_threshold",
+        "term_transition"
+      ],
+      "notes": [
+        "A regime is not ultimate truth, but the currently carrying organization.",
+        "A regime may absorb variation until carrying capacity is exhausted."
+      ]
+    },
+    {
+      "id": "term_transition",
+      "label": "Transition",
+      "category": "reordering",
+      "definition": "A necessary reordering under exhausted carrying capacity.",
+      "short_definition": "Necessary reordering after exhausted carrying capacity.",
+      "related_to": [
+        "term_threshold",
+        "term_regime",
+        "term_drift"
+      ],
+      "notes": [
+        "Transition is not always optional or ideological.",
+        "Transition becomes necessary when preservation in the old regime is no longer stable."
+      ]
+    },
+    {
+      "id": "term_responsibility",
+      "label": "Responsibility",
+      "category": "normative_binding",
+      "definition": "The return of effects into balance and consequence.",
+      "short_definition": "Return of effects into balance and consequence.",
+      "related_to": [
+        "term_resonance"
+      ],
+      "notes": [
+        "Responsibility binds effect back to source and consequence.",
+        "Responsibility in TERA is not moral decoration but structural accountability."
+      ]
+    },
+    {
+      "id": "term_freedom",
+      "label": "Freedom",
+      "category": "possibility_space",
+      "definition": "The available space of action, variation, or release before commitment.",
+      "short_definition": "Available space before commitment.",
+      "related_to": [
+        "term_release",
+        "term_responsibility"
+      ],
+      "notes": [
+        "Freedom without responsibility remains unbounded possibility.",
+        "Freedom becomes consequential when it passes through release."
+      ]
+    },
+    {
+      "id": "term_release",
+      "label": "Release",
+      "category": "activation",
+      "definition": "The operational transfer of possibility into effect.",
+      "short_definition": "Transfer of possibility into effect.",
+      "related_to": [
+        "term_freedom",
+        "term_responsibility"
+      ],
+      "notes": [
+        "Release is not identical to freedom.",
+        "Release is the point where possible action becomes active consequence."
+      ]
+    },
+    {
+      "id": "term_power",
+      "label": "Power",
+      "category": "effect_capacity",
+      "definition": "The ability to enforce, scale, or propagate effects.",
+      "short_definition": "Capacity to enforce or scale effects.",
+      "related_to": [
+        "term_release",
+        "term_resonance",
+        "term_responsibility"
+      ],
+      "notes": [
+        "Power is structurally relevant where release amplifies reach.",
+        "Uncoupled power is one route by which tools become weapons."
+      ]
+    },
+    {
+      "id": "term_use",
+      "label": "Use",
+      "category": "application",
+      "definition": "Actual application of a structure, tool, or claim.",
+      "short_definition": "Actual application.",
+      "related_to": [
+        "term_release",
+        "term_power"
+      ],
+      "notes": [
+        "Use may remain aligned with the original claim or drift away from it.",
+        "Use is where TERA asks whether function and responsibility stay coupled."
+      ]
+    },
+    {
+      "id": "term_weapon",
+      "label": "Weapon",
+      "category": "decoupled_power",
+      "definition": "Power in use that is directed toward asymmetry, coercion, or structural harm.",
+      "short_definition": "Decoupled power directed toward harm or coercion.",
+      "related_to": [
+        "term_power",
+        "term_use",
+        "term_responsibility"
+      ],
+      "notes": [
+        "A weapon is not defined only by object-form.",
+        "A tool becomes weapon-like when power detaches from claimed responsibility."
+      ]
+    },
+    {
+      "id": "term_gate",
+      "label": "Gate",
+      "category": "decision_structure",
+      "definition": "A thresholded decision structure that regulates whether a representation should be trusted, deferred, rejected, or temporarily held.",
+      "short_definition": "Thresholded decision structure.",
+      "related_to": [
+        "gate_accept",
+        "gate_wait",
+        "gate_reject",
+        "gate_defer"
+      ],
+      "notes": [
+        "The gate is central to TERA.",
+        "Gate decisions are about coupling discipline, not just confidence."
+      ]
+    },
+    {
+      "id": "term_accept",
+      "label": "ACCEPT",
+      "category": "gate_state",
+      "definition": "Stable enough to trust and couple normally.",
+      "short_definition": "Trust and couple normally.",
+      "related_to": [
+        "term_gate",
+        "term_wait",
+        "term_reject",
+        "term_defer"
+      ]
+    },
+    {
+      "id": "term_wait",
+      "label": "WAIT",
+      "category": "gate_state",
+      "definition": "Regulated non-commitment under unresolved instability.",
+      "short_definition": "Regulated non-commitment.",
+      "related_to": [
+        "term_gate",
+        "term_accept",
+        "term_reject",
+        "term_defer"
+      ],
+      "notes": [
+        "WAIT is not weakness.",
+        "WAIT protects against premature hardening of unstable knowledge."
+      ]
+    },
+    {
+      "id": "term_reject",
+      "label": "REJECT",
+      "category": "gate_state",
+      "definition": "Structurally unstable or inconsistent representation.",
+      "short_definition": "Structurally unstable or inconsistent.",
+      "related_to": [
+        "term_gate",
+        "term_accept",
+        "term_wait",
+        "term_defer"
+      ]
+    },
+    {
+      "id": "term_defer",
+      "label": "DEFER",
+      "category": "gate_state",
+      "definition": "Operational pause due to missing constraints, missing data, or insufficient forensics.",
+      "short_definition": "Operational hold pending missing constraints or forensics.",
+      "related_to": [
+        "term_gate",
+        "term_accept",
+        "term_wait",
+        "term_reject"
+      ]
+    }
+  ],
+  "gate_cluster": {
+    "id": "cluster_gate_responsibility_power_resonance",
+    "label": "Gate(Responsibility, Power, Resonance)",
+    "definition": "Release only where effect, reach, and consequence remain responsibly coupled.",
+    "elements": [
+      "term_responsibility",
+      "term_power",
+      "term_resonance",
+      "term_release",
+      "term_gate"
+    ]
+  },
+  "usage_notes": {
+    "for_humans": [
+      "Use labels and definitions to keep discussion aligned.",
+      "Use notes to separate intuition from formal use."
+    ],
+    "for_machines": [
+      "Use ids as stable references.",
+      "Use category for grouping or parser logic.",
+      "Use related_to and contrast_with as relation edges."
+    ]
+  }
+}
