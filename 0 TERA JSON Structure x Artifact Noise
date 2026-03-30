@@ -1,0 +1,414 @@
+{
+  "schema": {
+    "id": "tera_noise_artifact_information",
+    "label": "TERA Noise Artifact Information",
+    "version": "0.2.0",
+    "status": "draft_public",
+    "description": "TERA schema for evaluating informational noise, artifacts, stochastic spread, dwell-time behavior, and perspective-dependent deviations across data, topology, naming, updates, and software paths."
+  },
+  "purpose": {
+    "primary": "Distinguish unstable informational noise from stable but falsely coupled artifact formation.",
+    "secondary": [
+      "Describe how stochastic spread becomes readable through time, dwell behavior, and structural persistence.",
+      "Track how perspective changes interpretation without automatically changing underlying structure.",
+      "Support TERA gate decisions for informational systems under uncertainty."
+    ]
+  },
+  "core_distinction": {
+    "noise": {
+      "id": "term_noise_information",
+      "label": "Informational Noise",
+      "definition": "Unstable, weakly coupled, scattered, or fluctuating disturbance that reduces readability or interpretive precision without yet forming a stable false structure.",
+      "key_properties": [
+        "high spread",
+        "low persistence",
+        "weak coupling",
+        "often reversible",
+        "may collapse under filtering"
+      ]
+    },
+    "artifact": {
+      "id": "term_artifact_information",
+      "label": "Informational Artifact",
+      "definition": "A stable or recurring deviation that appears meaningful because it is structurally retained, but is falsely coupled, semantically shifted, or topologically distorted.",
+      "key_properties": [
+        "structural persistence",
+        "apparent meaning",
+        "false coupling",
+        "can survive filtering",
+        "can mislead models, users, or systems"
+      ]
+    }
+  },
+  "stochastic_view": {
+    "statement": "Stochasticity in TERA is not only random variation. It becomes relevant when spread, recurrence, dwell behavior, and perspective produce either weak disturbance or stable false structure.",
+    "noise_reading": "Noise is stochastic variation that remains insufficiently retained to form a stable interpretive object.",
+    "artifact_reading": "Artifact is stochastic or structural deviation that has gained enough persistence, naming support, path retention, or perspective reinforcement to appear real.",
+    "dwell_time_reading": "Dwell time helps distinguish fleeting disturbance from retained deviation.",
+    "perspective_reading": "Perspective does not create truth, but it influences which informational structures become visible, overemphasized, or misclassified."
+  },
+  "dimensions": [
+    {
+      "id": "dim_input_noise",
+      "label": "Input Noise",
+      "type": "source_variation",
+      "definition": "Variance introduced at intake by conflicting, duplicated, weak, or low-quality inputs.",
+      "examples": [
+        "sensor jitter",
+        "duplicate records with conflicting timestamps",
+        "mixed units in the same input stream"
+      ]
+    },
+    {
+      "id": "dim_transport_noise",
+      "label": "Transport Noise",
+      "type": "path_variation",
+      "definition": "Disturbance introduced while information moves between nodes, services, processes, or interfaces.",
+      "examples": [
+        "encoding mismatch",
+        "truncated logs",
+        "packet loss side effects",
+        "partial event delivery"
+      ]
+    },
+    {
+      "id": "dim_semantic_noise",
+      "label": "Semantic Noise",
+      "type": "meaning_variation",
+      "definition": "Meaning weakens because labels, declarations, or interpretations remain too diffuse or inconsistent.",
+      "examples": [
+        "ambiguous field names",
+        "context-free alerts",
+        "status messages with unclear scope"
+      ]
+    },
+    {
+      "id": "dim_topological_noise",
+      "label": "Topological Noise",
+      "type": "relation_variation",
+      "definition": "Overlinked, underlinked, or unstable dependency structures reduce structural readability.",
+      "examples": [
+        "dependency graph overgrowth",
+        "unclear ownership paths",
+        "cascading notifications without priority logic"
+      ]
+    },
+    {
+      "id": "dim_temporal_noise",
+      "label": "Temporal Noise",
+      "type": "time_variation",
+      "definition": "Variation that appears through timing inconsistency, sequencing issues, or unstable recurrence.",
+      "examples": [
+        "clock drift in events",
+        "out-of-order updates",
+        "burst anomalies with no persistence"
+      ]
+    },
+    {
+      "id": "dim_perspective_noise",
+      "label": "Perspective Noise",
+      "type": "interpretive_variation",
+      "definition": "A shift in observer framing, scale, or context weighting increases apparent significance without stable underlying change.",
+      "examples": [
+        "local anomaly treated as systemic truth",
+        "single dashboard metric overread as total state",
+        "narrative emphasis mistaken for structural evidence"
+      ]
+    }
+  ],
+  "artifact_forms": [
+    {
+      "id": "art_false_mapping",
+      "label": "False Mapping Artifact",
+      "type": "mapping_error",
+      "definition": "A stable but incorrect relation is created between source, label, effect, or trust level.",
+      "examples": [
+        "wrong field mapped to trusted variable",
+        "metric assigned to the wrong service",
+        "UI label detached from backend meaning"
+      ]
+    },
+    {
+      "id": "art_naming_shift",
+      "label": "Naming Artifact",
+      "type": "declaration_error",
+      "definition": "A variable, declaration, or symbol retains trust while its actual behavior or meaning has shifted.",
+      "examples": [
+        "variable called 'stable' that only means 'not recently changed'",
+        "flag called 'safe_mode' that enables risky fallback behavior",
+        "parameter reused under changed semantics"
+      ]
+    },
+    {
+      "id": "art_update_semantic_shift",
+      "label": "Update Semantic Shift",
+      "type": "change_artifact",
+      "definition": "An update preserves the appearance of continuity while changing actual behavior, meaning, or path logic.",
+      "examples": [
+        "bugfix changes output semantics",
+        "patch alters timeout behavior without documentation",
+        "schema update keeps key names but shifts interpretation"
+      ]
+    },
+    {
+      "id": "art_topological_distortion",
+      "label": "Topological Distortion Artifact",
+      "type": "relation_artifact",
+      "definition": "A stable structural distortion in graph, dependency, or route form creates false causal readability.",
+      "examples": [
+        "monitoring bias makes a peripheral service appear central",
+        "aggregation hides feedback loops",
+        "logging architecture produces a false bottleneck"
+      ]
+    },
+    {
+      "id": "art_perspective_lock",
+      "label": "Perspective Lock Artifact",
+      "type": "interpretive_artifact",
+      "definition": "A perspective becomes so dominant that one view of the information hardens into the false default interpretation.",
+      "examples": [
+        "single viewpoint becomes operational truth",
+        "one diagnostic screen overrides multi-source evidence",
+        "local symptom is treated as full system state"
+      ]
+    }
+  ],
+  "temporal_logic": {
+    "dwell_time": {
+      "definition": "Dwell time describes how long a deviation remains present, active, or structurally retained across informational steps.",
+      "classes": [
+        {
+          "id": "dwell_ephemeral",
+          "label": "Ephemeral",
+          "definition": "Short-lived variation that disappears quickly and does not retain structural influence."
+        },
+        {
+          "id": "dwell_recurrent",
+          "label": "Recurrent",
+          "definition": "Deviation reappears across multiple steps but may still be weakly coupled."
+        },
+        {
+          "id": "dwell_persistent",
+          "label": "Persistent",
+          "definition": "Deviation remains present long enough to influence interpretation, naming, routing, or trust."
+        },
+        {
+          "id": "dwell_embedded",
+          "label": "Embedded",
+          "definition": "Deviation becomes part of the assumed system behavior and risks being normalized."
+        }
+      ]
+    },
+    "progression_logic": [
+      "Ephemeral spread tends toward noise.",
+      "Recurrent spread requires coupling analysis.",
+      "Persistent retained deviation may indicate artifact formation.",
+      "Embedded deviation is often treated as normal even when structurally false."
+    ],
+    "key_question": "Does time merely carry the disturbance, or does time stabilize it into an artifact?"
+  },
+  "perspective_logic": {
+    "definition": "Perspective in TERA is the interpretive angle through which information is weighted, grouped, bounded, or emphasized.",
+    "important_distinction": "Perspective can change visibility without changing the underlying object. It can also amplify false stability if not checked against structure.",
+    "modes": [
+      {
+        "id": "pers_scale",
+        "label": "Scale Perspective",
+        "definition": "The same information is read locally, regionally, or systemically."
+      },
+      {
+        "id": "pers_role",
+        "label": "Role Perspective",
+        "definition": "The same information is read differently depending on user, subsystem, or stakeholder position."
+      },
+      {
+        "id": "pers_time_window",
+        "label": "Time Window Perspective",
+        "definition": "Interpretation depends on whether a short, medium, or long time range is used."
+      },
+      {
+        "id": "pers_narrative_weight",
+        "label": "Narrative Weighting",
+        "definition": "Language, emphasis, or framing increases or decreases perceived importance."
+      }
+    ],
+    "failure_condition": "Perspective becomes artifact-producing when interpretive weighting is mistaken for structural proof."
+  },
+  "deviation_sources": [
+    {
+      "id": "src_virus",
+      "label": "Virus-like propagation",
+      "class": "malicious_replication",
+      "definition": "Code or data movement self-propagates by attaching to legitimate structures and spreading through trusted paths.",
+      "tera_reading": {
+        "noise_component": "initial anomalous spread or clutter",
+        "artifact_component": "persistent false normality after infected behavior stabilizes"
+      }
+    },
+    {
+      "id": "src_exploit",
+      "label": "Exploit path",
+      "class": "vulnerability_activation",
+      "definition": "An unintended path becomes active through crafted input, revealing hidden assumptions or unstable boundaries.",
+      "tera_reading": {
+        "noise_component": "anomalous edge-case triggering",
+        "artifact_component": "misbehavior mistaken for legitimate execution path"
+      }
+    },
+    {
+      "id": "src_trojan",
+      "label": "Trojan structure",
+      "class": "deceptive_payload",
+      "definition": "A component appears legitimate while carrying hidden behavioral divergence.",
+      "tera_reading": {
+        "noise_component": "weak early anomalies or trust leakage",
+        "artifact_component": "trusted but false coupling between declared role and actual effect"
+      }
+    },
+    {
+      "id": "src_update_error",
+      "label": "Update error",
+      "class": "change_failure",
+      "definition": "An intended correction introduces mismatch, instability, or incoherence.",
+      "tera_reading": {
+        "noise_component": "temporary instability after rollout",
+        "artifact_component": "wrong new baseline accepted as normal"
+      }
+    },
+    {
+      "id": "src_bugfix_shift",
+      "label": "Bugfix shift",
+      "class": "semantic_drift",
+      "definition": "A fix resolves one fault while silently altering expected meaning, route, or output structure.",
+      "tera_reading": {
+        "noise_component": "mixed reports during transition",
+        "artifact_component": "false assumption that fixed means same meaning with fewer errors"
+      }
+    },
+    {
+      "id": "src_declaration_change",
+      "label": "Declaration change",
+      "class": "symbolic_drift",
+      "definition": "A declaration, variable, symbol, or flag changes interpretive meaning and creates downstream deviation.",
+      "tera_reading": {
+        "noise_component": "temporary confusion across modules or teams",
+        "artifact_component": "persistent misuse because naming and behavior are no longer aligned"
+      }
+    },
+    {
+      "id": "src_bug_normalization",
+      "label": "Bug normalization",
+      "class": "embedded_deviation",
+      "definition": "A known deviation remains so long in the system that it is treated as intended behavior.",
+      "tera_reading": {
+        "noise_component": "repeated anomaly reports",
+        "artifact_component": "deviation becomes embedded and semantically protected"
+      }
+    }
+  ],
+  "classification_heuristics": [
+    {
+      "id": "heur_001",
+      "rule": "If deviation is scattered, weakly coupled, and short-lived, classify toward noise."
+    },
+    {
+      "id": "heur_002",
+      "rule": "If deviation persists across time, path, or naming boundaries, test toward artifact."
+    },
+    {
+      "id": "heur_003",
+      "rule": "If filtering removes the deviation, it is more likely noise than artifact."
+    },
+    {
+      "id": "heur_004",
+      "rule": "If a label remains trusted while behavior shifts, prioritize artifact analysis."
+    },
+    {
+      "id": "heur_005",
+      "rule": "If perspective changes the reading but not the structure, do not confuse interpretation with transformation."
+    },
+    {
+      "id": "heur_006",
+      "rule": "If dwell time embeds the deviation into normal operations, classify as artifact risk even when users stop noticing it."
+    }
+  ],
+  "detection_questions": [
+    {
+      "id": "dq_001",
+      "text": "Is the deviation unstable and scattered, or stable and recurring?"
+    },
+    {
+      "id": "dq_002",
+      "text": "How long does the deviation dwell across informational steps?"
+    },
+    {
+      "id": "dq_003",
+      "text": "Did the deviation enter through input, transport, naming, topology, or update logic?"
+    },
+    {
+      "id": "dq_004",
+      "text": "Does the observed pattern survive simple filtering?"
+    },
+    {
+      "id": "dq_005",
+      "text": "Is the meaning of the object still aligned with its label, declaration, or operational role?"
+    },
+    {
+      "id": "dq_006",
+      "text": "Has a perspective shift changed interpretation without changing structure?"
+    },
+    {
+      "id": "dq_007",
+      "text": "Has time stabilized the deviation into an embedded false normality?"
+    }
+  ],
+  "tera_gate_mapping": {
+    "ACCEPT": {
+      "definition": "Deviation is understood and bounded; the representation remains trustworthy enough for normal coupling."
+    },
+    "WAIT": {
+      "definition": "Deviation is visible but not yet cleanly separated into noise, artifact, or mixed-state."
+    },
+    "REJECT": {
+      "definition": "Representation is structurally misleading, falsely coupled, or unsafe to trust."
+    },
+    "DEFER": {
+      "definition": "Logs, forensics, timing data, or dependency tracing remain insufficient for responsible classification."
+    }
+  },
+  "minimal_recursion_logic": {
+    "principle": "Noise and artifact must be checked recursively across inner structure, outer path, time retention, and perspective change.",
+    "steps": [
+      "Check whether the object is internally coherent.",
+      "Check whether its external path and coupling remain aligned.",
+      "Check whether the deviation persists through time or dissolves quickly.",
+      "Check whether perspective shift changes interpretation without changing structure.",
+      "Repeat after update, rename, transport, transformation, or rerouting.",
+      "If deviation persists after filtering and perspective correction, test for artifact rather than noise."
+    ]
+  },
+  "human_reading": {
+    "short_form": "Noise weakens information through spread and instability. Artifact stabilizes a wrong coupling so that false structure starts to look meaningful.",
+    "extended_form": "In TERA, noise is not only a physical disturbance. It can arise anywhere in the informational chain through spread, ambiguity, transport loss, naming confusion, perspective weighting, or temporal inconsistency. Artifact begins where deviation gains enough persistence, dwell time, trust, or structural retention to appear real."
+  },
+  "machine_use": {
+    "intended_fit": [
+      "monitoring",
+      "log parsing",
+      "update auditing",
+      "schema validation",
+      "naming consistency checks",
+      "dependency graph analysis",
+      "security path review",
+      "exploit route classification"
+    ],
+    "future_extensions": [
+      "severity scoring",
+      "dwell-time metrics",
+      "path confidence weighting",
+      "relation graph edges",
+      "artifact persistence scoring",
+      "perspective-shift detection"
+    ]
+  }
+}
