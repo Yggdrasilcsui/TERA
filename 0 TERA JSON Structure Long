@@ -1,0 +1,374 @@
+{
+  "framework": {
+    "id": "tera",
+    "label": "TERA",
+    "full_name": "Temporal Entropy & Resource Alignment",
+    "version": "0.2.0",
+    "status": "draft_public",
+    "description": "Meta-level stability framework for evaluating whether informational representations of systems remain structurally stable under uncertainty, noise, drift, and contextual variation.",
+    "audience": [
+      "humans",
+      "machines"
+    ]
+  },
+  "design_principles": [
+    {
+      "id": "dp_001",
+      "label": "Separation of identifier and meaning",
+      "definition": "Stable identifiers must not depend on changing prose explanations."
+    },
+    {
+      "id": "dp_002",
+      "label": "Human-machine dual readability",
+      "definition": "Every core element should be machine-addressable and human-readable."
+    },
+    {
+      "id": "dp_003",
+      "label": "Gate before commitment",
+      "definition": "Representations must be evaluated before action, release, or strong coupling."
+    }
+  ],
+  "entities": {
+    "physical_state": {
+      "id": "entity_physical_state",
+      "symbol": "x_n",
+      "label": "Physical state",
+      "type": "state",
+      "definition": "Underlying system state."
+    },
+    "observation": {
+      "id": "entity_observation",
+      "symbol": "y_n",
+      "label": "Observation",
+      "type": "measurement",
+      "definition": "Measurement or observed output."
+    },
+    "control_input": {
+      "id": "entity_control_input",
+      "symbol": "u_n",
+      "label": "Control input",
+      "type": "intervention",
+      "definition": "External intervention or control."
+    },
+    "belief_state": {
+      "id": "entity_belief_state",
+      "symbol": "b_n",
+      "label": "Belief state",
+      "type": "representation",
+      "definition": "Informational state or inferred representation."
+    },
+    "structured_state": {
+      "id": "entity_structured_state",
+      "symbol": "rho_n",
+      "label": "Structured state",
+      "type": "representation",
+      "definition": "Structured representational state used for tension and projection logic."
+    },
+    "context_set": {
+      "id": "entity_context_set",
+      "symbol": "Gamma",
+      "label": "Context set",
+      "type": "context_space",
+      "definition": "Set of admissible context perturbations."
+    }
+  },
+  "core_terms": {
+    "signal": {
+      "id": "term_signal",
+      "label": "Signal",
+      "type": "classification",
+      "definition": "A viable, correctly coupled trace."
+    },
+    "noise": {
+      "id": "term_noise",
+      "label": "Noise",
+      "type": "classification",
+      "definition": "An unstable or undirected disturbance."
+    },
+    "artifact": {
+      "id": "term_artifact",
+      "label": "Artifact",
+      "type": "classification",
+      "definition": "A stable but falsely coupled false trace."
+    },
+    "drift": {
+      "id": "term_drift",
+      "label": "Drift",
+      "type": "dynamics",
+      "definition": "State displacement without complete return-flow."
+    },
+    "resonance": {
+      "id": "term_resonance",
+      "label": "Resonance",
+      "type": "coupling",
+      "definition": "A connectable coupling of information, energy, and effect."
+    },
+    "threshold": {
+      "id": "term_threshold",
+      "label": "Threshold",
+      "type": "transition_boundary",
+      "definition": "A qualitative tipping edge of a state."
+    },
+    "regime": {
+      "id": "term_regime",
+      "label": "Regime",
+      "type": "order_form",
+      "definition": "The carrying order-form of a system."
+    },
+    "transition": {
+      "id": "term_transition",
+      "label": "Transition",
+      "type": "reordering",
+      "definition": "A necessary reordering under exhausted carrying capacity."
+    },
+    "responsibility": {
+      "id": "term_responsibility",
+      "label": "Responsibility",
+      "type": "normative_binding",
+      "definition": "The return of effects into balance and consequence."
+    }
+  },
+  "math": {
+    "informational_functional": {
+      "id": "math_i_b",
+      "symbol": "I(b)",
+      "label": "Informational functional",
+      "form": "alpha * D(b || b*) + beta * H(b) + gamma * R(b)",
+      "components": {
+        "D": {
+          "label": "Divergence",
+          "definition": "Divergence from reference representation."
+        },
+        "H": {
+          "label": "Entropy term",
+          "definition": "Uncertainty / entropy term."
+        },
+        "R": {
+          "label": "Structural penalty",
+          "definition": "Structural penalty / inconsistency term."
+        }
+      },
+      "purpose": "Evaluate representational stability."
+    },
+    "drift_condition": {
+      "id": "math_drift_condition",
+      "symbol": "Delta_I_n",
+      "form": "E[Delta_I_n | b_n] <= kappa * I(b_n) + c",
+      "label": "Bounded drift condition",
+      "definition": "Criterion for bounded informational drift."
+    },
+    "tension_operator": {
+      "id": "math_tension_operator",
+      "symbol": "s_n",
+      "form": "alpha_s * ||L(rho_n)|| + beta_s * ||rho_n - Pi(rho_n)||",
+      "label": "Tension operator",
+      "definition": "Structural strain / representational tension."
+    }
+  },
+  "gate_system": {
+    "id": "tera_gate_system",
+    "label": "TERA Gate System",
+    "gate_values": [
+      {
+        "id": "gate_accept",
+        "value": "ACCEPT",
+        "label": "Accept",
+        "phase": "stable",
+        "definition": "Stable enough to trust and couple normally."
+      },
+      {
+        "id": "gate_wait",
+        "value": "WAIT",
+        "label": "Wait",
+        "phase": "transitional",
+        "definition": "Regulated non-commitment under unresolved instability."
+      },
+      {
+        "id": "gate_reject",
+        "value": "REJECT",
+        "label": "Reject",
+        "phase": "unstable",
+        "definition": "Structurally unstable or inconsistent representation."
+      },
+      {
+        "id": "gate_defer",
+        "value": "DEFER",
+        "label": "Defer",
+        "phase": "operational_hold",
+        "definition": "Optional practical pause due to missing constraints, missing data, or insufficient forensics."
+      }
+    ],
+    "thresholds": {
+      "tau_accept": {
+        "id": "threshold_accept",
+        "label": "Accept threshold",
+        "definition": "Upper bound of stable tension."
+      },
+      "tau_reject": {
+        "id": "threshold_reject",
+        "label": "Reject threshold",
+        "definition": "Lower bound of unstable tension."
+      }
+    },
+    "classification_rule": {
+      "id": "rule_gate_classification",
+      "type": "ordered_threshold_rule",
+      "steps": [
+        "if s_n <= tau_accept => ACCEPT",
+        "if tau_accept < s_n < tau_reject => WAIT",
+        "if s_n >= tau_reject => REJECT"
+      ]
+    }
+  },
+  "responsibility_gate": {
+    "id": "gate_responsibility_power_resonance",
+    "label": "Gate(Responsibility, Power, Resonance)",
+    "definition": "Release only where effect, reach, and consequence remain responsibly coupled.",
+    "questions": [
+      {
+        "id": "rq_001",
+        "text": "Who carries the consequence?"
+      },
+      {
+        "id": "rq_002",
+        "text": "What power is enabled by release or use?"
+      },
+      {
+        "id": "rq_003",
+        "text": "How far does resonance propagate into other domains?"
+      },
+      {
+        "id": "rq_004",
+        "text": "Does use remain coupled to the original claim?"
+      }
+    ]
+  },
+  "pipeline": {
+    "id": "tera_pipeline",
+    "label": "Evaluation pipeline",
+    "stages": [
+      {
+        "id": "stage_01_observe",
+        "label": "Observe"
+      },
+      {
+        "id": "stage_02_represent",
+        "label": "Represent"
+      },
+      {
+        "id": "stage_03_eval_drift",
+        "label": "Evaluate informational drift"
+      },
+      {
+        "id": "stage_04_eval_tension",
+        "label": "Evaluate structural tension"
+      },
+      {
+        "id": "stage_05_probe_context",
+        "label": "Probe context robustness"
+      },
+      {
+        "id": "stage_06_apply_gate",
+        "label": "Apply gate"
+      },
+      {
+        "id": "stage_07_act",
+        "label": "Couple, defer, damp, or decouple"
+      }
+    ]
+  },
+  "context_robustness": {
+    "id": "context_robustness_check",
+    "label": "Context robustness",
+    "principle": "A gate decision must remain sufficiently invariant across admissible context perturbations.",
+    "checks": [
+      "parameter variation",
+      "noise realizations",
+      "model-form alternatives",
+      "measurement perturbations"
+    ],
+    "rule": "If classification is not robust across Gamma, commitment must not be hardened."
+  },
+  "evaluation_questions": [
+    {
+      "id": "eq_001",
+      "text": "Is the observed pattern signal, noise, or artifact?"
+    },
+    {
+      "id": "eq_002",
+      "text": "Is representational drift bounded?"
+    },
+    {
+      "id": "eq_003",
+      "text": "Is structural tension acceptable?"
+    },
+    {
+      "id": "eq_004",
+      "text": "Is the gate decision robust across admissible contexts?"
+    },
+    {
+      "id": "eq_005",
+      "text": "Should the system couple, wait, reject, or defer?"
+    },
+    {
+      "id": "eq_006",
+      "text": "Is release or use still aligned with responsibility?"
+    }
+  ],
+  "example_cases": [
+    {
+      "id": "case_overshoot",
+      "label": "Overshoot",
+      "domain": "climate / resources / systemic budget",
+      "input_pattern": {
+        "drivers": [
+          "resource extraction",
+          "delayed return flows",
+          "accumulated emissions",
+          "infrastructure dependence"
+        ],
+        "observations": [
+          "persistent warming",
+          "coupled extremes",
+          "stress on transport and stability",
+          "lag between release and recovery"
+        ]
+      },
+      "tera_reading": {
+        "signal": [
+          "budget imbalance",
+          "persistent drift",
+          "coupled systemic stress"
+        ],
+        "noise": [
+          "isolated local event without context"
+        ],
+        "artifact": [
+          "confusing a single event with a total distribution shift"
+        ],
+        "gate": {
+          "primary": "ACCEPT",
+          "secondary": "WAIT"
+        },
+        "reason": "Core systemic logic is strong, while local attribution and intervention paths may still require bounded context checking."
+      }
+    }
+  ],
+  "repo_alignment": {
+    "id": "repo_alignment",
+    "intended_fit": [
+      "README for physicists",
+      "README for science",
+      "AI logic layer",
+      "resonance / regime / time / weather subspaces",
+      "future notebooks or Python demos"
+    ],
+    "usage": [
+      "reference schema",
+      "shared vocabulary",
+      "future parser target",
+      "benchmark test structure",
+      "bridge between README and implementation"
+    ]
+  }
+}
