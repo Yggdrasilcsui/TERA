@@ -1,0 +1,182 @@
+TERA Meta Logic
+----------------
+A domain-agnostic stability gate for time-evolving informational systems.
+
+This file implements only the meta-logic / feedback loop.
+It deliberately avoids any domain-specific example.
+Domain users must provide the required hooks.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from enum import IntEnum
+from statistics import mean
+from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Protocol, Sequence, Tuple
+
+
+class Gate(IntEnum):
+    REJECT = -1
+    WAIT = 0
+    ACCEPT = 1
+
+
+@dataclass(frozen=True)
+class TERAConfig:
+    # Acceptance / rejection thresholds for the tension metric.
+    tau_accept: float
+    tau_reject: float
+
+    # Bounded-drift coefficients.
+    kappa: float
+    c: float
+
+    # Informational energy weights.
+    alpha: float
+    beta: float
+    gamma: float
+
+    # Tension weights.
+    alpha_s: float
+    beta_s: float
+
+    # Base coupling strength.
+    eta0: float
+
+    # Context forensics.
+    max_depth: int = 2
+    probe_budget: int = 8
+    epsilon_stability: float = 1e-9
+
+    # User-provided context set. Each item should be a context descriptor.
+    context_set: Sequence[Any] = field(default_factory=tuple)
+
+    # Decision aggregation thresholds.
+    accept_ratio: float = 0.70
+    reject_ratio: float = 0.50
+
+    # WAIT damping factor used after an undecided step.
+    wait_damping: float = 0.25
+
+
+@dataclass
+class TERAResult:
+    gate: Gate
+    drift_ok: bool
+    info_energy_now: float
+    info_energy_next: float
+    delta_info_energy: float
+    tension: float
+    effective_coupling: float
+    context_votes: Mapping[Gate, int]
+    diagnostics: Mapping[str, Any]
+
+            return Gate.REJECT, votes
+        if accept_ratio >= self.config.accept_ratio:
+            return Gate.ACCEPT, votes
+
+        # If the context verdict is not invariant enough, recurse.
+        return self.context_forensics(
+            belief=belief,
+            rho=rho,
+            control=control,
+            observation_next=observation_next,
+            depth=depth + 1,
+        )
+
+    # ------------------------------------------------------------------
+    # Master step
+    # ------------------------------------------------------------------
+
+    def step(self, belief: Any, rho: Any, control: Any, observation_next: Any) -> Tuple[Any, Any, TERAResult]:
+        ctx0 = self.domain.default_context()
+
+        # 1) Informational update.
+        belief_next = self.domain.belief_update(belief, control, observation_next, ctx0)
+
+        # 2) Drift check.
+        drift_ok, i_now, i_next, delta_i = self.bounded_drift(belief, belief_next, ctx0)
+
+        # 3) Tension gate.
+        s_value = self.tension(rho, ctx0)
+        gate0 = self.gate_from_tension(s_value)
+
+        # 4) Context forensics across admissible contexts.
+        gate, votes = self.context_forensics(
+            belief=belief,
+            rho=rho,
+            control=control,
+            observation_next=observation_next,
+            depth=0,
+        )
+
+        # 5) Effective coupling.
+        eta = self.effective_coupling(s_value, gate)
+
+        # 6) Informational state update.
+        dt = self.domain.time_step(ctx0)
+        rho_star = self.domain.reference_state(ctx0)
+        projected = self.domain.projector(rho, ctx0)
+
+        correction = self.domain.scale(
+            self.domain.add(
+                self.domain.subtract(rho_star, rho),
+                self.domain.subtract(rho, projected),
+            ),
+            eta,
+        )
+
+        rho_next = self.domain.add(
+            rho,
+            self.domain.scale(
+                self.domain.add(
+                    self.domain.add(
+                        self.domain.intrinsic_operator(rho, ctx0),
+                        self.domain.modulation(rho, ctx0),
+                    ),
+                    correction,
+                ),
+                dt,
+            ),
+        )
+
+        # 7) Final clamp behavior.
+        if gate == Gate.REJECT:
+            rho_next = projected
+        elif gate == Gate.WAIT:
+            rho_delta = self.domain.subtract(rho_next, rho)
+            rho_next = self.domain.add(rho, self.domain.scale(rho_delta, self.config.wait_damping))
+
+        result = TERAResult(
+            gate=gate,
+            drift_ok=drift_ok,
+            info_energy_now=i_now,
+            info_energy_next=i_next,
+            delta_info_energy=delta_i,
+            tension=s_value,
+            effective_coupling=eta,
+            context_votes=votes,
+            diagnostics={
+                "baseline_gate": gate0,
+                "baseline_context": ctx0,
+            },
+        )
+        return belief_next, rho_next, result
+
+    # ------------------------------------------------------------------
+    # Feedback loop
+    # ------------------------------------------------------------------
+
+    def run(
+        self,
+        belief0: Any,
+        rho0: Any,
+        data_stream: Iterable[Tuple[Any, Any]],
+    ) -> Iterable[Tuple[Any, Any, TERAResult]]:
+        belief = belief0
+        rho = rho0
+
+        for control, observation_next in data_stream:
+            belief, rho, result = self.step(belief, rho, control, observation_next)
+            yield belief, rho, result
