@@ -1,0 +1,505 @@
+main:
+
+{
+  "meta": {
+    "name": "TERA",
+    "full_name": "Temporal Entropy & Resource Alignment",
+    "version": "0.1.0",
+    "status": "public_structure_draft",
+    "file_role": "core framework structure",
+    "description": "Meta-level stability framework for evaluating whether informational representations of systems remain structurally stable under uncertainty, noise, drift, and contextual variation."
+  },
+  "positioning": {
+    "is": [
+      "meta-level stability framework",
+      "scientific interface layer",
+      "decision-gating architecture",
+      "bounded-drift auditor",
+      "context-sensitive supervisory structure"
+    ],
+    "is_not": [
+      "new physical law",
+      "standalone predictive engine",
+      "replacement for physics",
+      "theory of everything",
+      "proof of truth"
+    ],
+    "operates_on": "informational representations of systems",
+    "does_not_operate_on": "physical reality directly"
+  },
+  "core_question": {
+    "primary": "Is the current representation stable enough to justify action, update, or commitment?",
+    "secondary": [
+      "Is informational drift bounded?",
+      "Is structural tension acceptable?",
+      "Is the gate decision robust across admissible context variation?"
+    ]
+  },
+  "entities": {
+    "physical_state": {
+      "symbol": "x_n",
+      "meaning": "underlying system state"
+    },
+    "observation": {
+      "symbol": "y_n",
+      "meaning": "measurement or observed output"
+    },
+    "control_input": {
+      "symbol": "u_n",
+      "meaning": "external intervention or control"
+    },
+    "belief_state": {
+      "symbol": "b_n",
+      "meaning": "informational state / inferred representation"
+    },
+    "structured_state": {
+      "symbol": "rho_n",
+      "meaning": "structured representational state used for tension and projection logic"
+    },
+    "context_set": {
+      "symbol": "Gamma",
+      "meaning": "set of admissible context perturbations"
+    }
+  },
+  "core_terms": {
+    "signal": "a viable, correctly coupled trace",
+    "noise": "an unstable or undirected disturbance",
+    "artifact": "a stable but falsely coupled false trace",
+    "drift": "state displacement without complete return-flow",
+    "resonance": "a connectable coupling of information, energy, and effect",
+    "threshold": "a qualitative tipping edge of a state",
+    "regime": "the carrying order-form of a system",
+    "transition": "a necessary reordering under exhausted carrying capacity",
+    "responsibility": "the return of effects into balance and consequence"
+  },
+  "mathematical_core": {
+    "informational_functional": {
+      "symbol": "I(b)",
+      "form": "alpha * D(b || b*) + beta * H(b) + gamma * R(b)",
+      "components": {
+        "D": "divergence from reference representation",
+        "H": "uncertainty / entropy term",
+        "R": "structural penalty / inconsistency term"
+      },
+      "purpose": "evaluate representational stability"
+    },
+    "drift_condition": {
+      "symbol": "Delta_I_n",
+      "form": "E[Delta_I_n | b_n] <= kappa * I(b_n) + c",
+      "meaning": "bounded informational drift criterion"
+    },
+    "tension_operator": {
+      "symbol": "s_n",
+      "form": "alpha_s * ||L(rho_n)|| + beta_s * ||rho_n - Pi(rho_n)||",
+      "meaning": "structural strain / representational tension"
+    }
+  },
+  "gate_logic": {
+    "states": {
+      "ACCEPT": {
+        "meaning": "stable enough to trust and couple normally",
+        "phase": "stable"
+      },
+      "WAIT": {
+        "meaning": "regulated non-commitment under unresolved instability",
+        "phase": "transitional"
+      },
+      "REJECT": {
+        "meaning": "structurally unstable or inconsistent representation",
+        "phase": "unstable"
+      },
+      "DEFER": {
+        "meaning": "optional practical pause due to missing constraints, missing data, or insufficient forensics",
+        "phase": "operational hold"
+      }
+    },
+    "thresholds": {
+      "tau_accept": "upper bound of stable tension",
+      "tau_reject": "lower bound of unstable tension"
+    },
+    "classification_rule": [
+      "if s_n <= tau_accept => ACCEPT",
+      "if tau_accept < s_n < tau_reject => WAIT",
+      "if s_n >= tau_reject => REJECT"
+    ]
+  },
+  "context_robustness": {
+    "principle": "A gate decision must remain sufficiently invariant across admissible context perturbations.",
+    "checks": [
+      "parameter variation",
+      "noise realizations",
+      "model-form alternatives",
+      "measurement perturbations"
+    ],
+    "rule": "If classification is not robust across Gamma, commitment must not be hardened."
+  },
+  "pipeline": {
+    "stages": [
+      "observe",
+      "represent",
+      "evaluate informational drift",
+      "evaluate structural tension",
+      "probe context robustness",
+      "apply gate",
+      "couple, defer, damp, or decouple"
+    ],
+    "minimal_flow": [
+      "Observation",
+      "Representation",
+      "Stability Evaluation",
+      "Gate",
+      "Action / Deferral / Decoupling"
+    ]
+  },
+  "responsibility_gate": {
+    "name": "Gate(Responsibility, Power, Resonance)",
+    "meaning": "Release only where effect, reach, and consequence remain responsibly coupled.",
+    "questions": [
+      "Who carries the consequence?",
+      "What power is enabled by release or use?",
+      "How far does resonance propagate into other domains?",
+      "Does use remain coupled to the original claim?"
+    ]
+  },
+  "scientific_interfaces": {
+    "physics": {
+      "reading": "stability filter over model representations, not a new ontology",
+      "anchors": [
+        "Lyapunov-style stability thinking",
+        "open-system dynamics",
+        "coarse-grained state evaluation",
+        "threshold phenomena"
+      ]
+    },
+    "computer_science": {
+      "reading": "decision architecture for uncertain model states",
+      "anchors": [
+        "confidence gating",
+        "abstention",
+        "model monitoring",
+        "recursive consistency checking",
+        "supervisory logic"
+      ]
+    },
+    "systems_control": {
+      "reading": "meta-level supervisory regulator",
+      "anchors": [
+        "partially observed plants",
+        "state estimation under noise",
+        "safe-mode triggering",
+        "delayed commitment"
+      ]
+    }
+  },
+  "evaluation_questions": [
+    "Is the observed pattern signal, noise, or artifact?",
+    "Is representational drift bounded?",
+    "Is structural tension acceptable?",
+    "Is the gate decision robust across admissible contexts?",
+    "Should the system couple, wait, reject, or defer?",
+    "Is release or use still aligned with responsibility?"
+  ],
+  "example_case": {
+    "name": "overshoot",
+    "domain": "climate / resources / systemic budget",
+    "input_pattern": {
+      "drivers": [
+        "resource extraction",
+        "delayed return flows",
+        "accumulated emissions",
+        "infrastructure dependence"
+      ],
+      "observations": [
+        "persistent warming",
+        "coupled extremes",
+        "stress on transport and stability",
+        "lag between release and recovery"
+      ]
+    },
+    "tera_reading": {
+      "signal": [
+        "budget imbalance",
+        "persistent drift",
+        "coupled systemic stress"
+      ],
+      "noise": [
+        "isolated local event without context"
+      ],
+      "artifact": [
+        "confusing a single event with a total distribution shift"
+      ],
+      "gate": "ACCEPT_WAIT",
+      "reason": "Core systemic logic is strong, while local attribution and intervention paths may still require bounded context checking."
+    }
+  },
+  "repo_alignment": {
+    "intended_fit": [
+      "README for physicists",
+      "README for science",
+      "AI logic layer",
+      "resonance / regime / time / weather subspaces",
+      "future notebooks or Python demos"
+    ],
+    "usage": [
+      "reference schema",
+      "shared vocabulary",
+      "future parser target",
+      "benchmark test structure",
+      "bridge between README and implementation"
+    ]
+  }
+}
+
+===============================
+
+Exp:
+
+{
+  "meta": {
+    "name": "TERA",
+    "full_name": "Temporal Entropy & Resource Alignment",
+    "version": "0.1.0",
+    "status": "public_structure_draft",
+    "file_role": "core framework structure",
+    "description": "Meta-level stability framework for evaluating whether informational representations of systems remain structurally stable under uncertainty, noise, drift, and contextual variation."
+  },
+  "positioning": {
+    "is": [
+      "meta-level stability framework",
+      "scientific interface layer",
+      "decision-gating architecture",
+      "bounded-drift auditor",
+      "context-sensitive supervisory structure"
+    ],
+    "is_not": [
+      "new physical law",
+      "standalone predictive engine",
+      "replacement for physics",
+      "theory of everything",
+      "proof of truth"
+    ],
+    "operates_on": "informational representations of systems",
+    "does_not_operate_on": "physical reality directly"
+  },
+  "core_question": {
+    "primary": "Is the current representation stable enough to justify action, update, or commitment?",
+    "secondary": [
+      "Is informational drift bounded?",
+      "Is structural tension acceptable?",
+      "Is the gate decision robust across admissible context variation?"
+    ]
+  },
+  "entities": {
+    "physical_state": {
+      "symbol": "x_n",
+      "meaning": "underlying system state"
+    },
+    "observation": {
+      "symbol": "y_n",
+      "meaning": "measurement or observed output"
+    },
+    "control_input": {
+      "symbol": "u_n",
+      "meaning": "external intervention or control"
+    },
+    "belief_state": {
+      "symbol": "b_n",
+      "meaning": "informational state / inferred representation"
+    },
+    "structured_state": {
+      "symbol": "rho_n",
+      "meaning": "structured representational state used for tension and projection logic"
+    },
+    "context_set": {
+      "symbol": "Gamma",
+      "meaning": "set of admissible context perturbations"
+    }
+  },
+  "core_terms": {
+    "signal": "a viable, correctly coupled trace",
+    "noise": "an unstable or undirected disturbance",
+    "artifact": "a stable but falsely coupled false trace",
+    "drift": "state displacement without complete return-flow",
+    "resonance": "a connectable coupling of information, energy, and effect",
+    "threshold": "a qualitative tipping edge of a state",
+    "regime": "the carrying order-form of a system",
+    "transition": "a necessary reordering under exhausted carrying capacity",
+    "responsibility": "the return of effects into balance and consequence"
+  },
+  "mathematical_core": {
+    "informational_functional": {
+      "symbol": "I(b)",
+      "form": "alpha * D(b || b*) + beta * H(b) + gamma * R(b)",
+      "components": {
+        "D": "divergence from reference representation",
+        "H": "uncertainty / entropy term",
+        "R": "structural penalty / inconsistency term"
+      },
+      "purpose": "evaluate representational stability"
+    },
+    "drift_condition": {
+      "symbol": "Delta_I_n",
+      "form": "E[Delta_I_n | b_n] <= kappa * I(b_n) + c",
+      "meaning": "bounded informational drift criterion"
+    },
+    "tension_operator": {
+      "symbol": "s_n",
+      "form": "alpha_s * ||L(rho_n)|| + beta_s * ||rho_n - Pi(rho_n)||",
+      "meaning": "structural strain / representational tension"
+    }
+  },
+  "gate_logic": {
+    "states": {
+      "ACCEPT": {
+        "meaning": "stable enough to trust and couple normally",
+        "phase": "stable"
+      },
+      "WAIT": {
+        "meaning": "regulated non-commitment under unresolved instability",
+        "phase": "transitional"
+      },
+      "REJECT": {
+        "meaning": "structurally unstable or inconsistent representation",
+        "phase": "unstable"
+      },
+      "DEFER": {
+        "meaning": "optional practical pause due to missing constraints, missing data, or insufficient forensics",
+        "phase": "operational hold"
+      }
+    },
+    "thresholds": {
+      "tau_accept": "upper bound of stable tension",
+      "tau_reject": "lower bound of unstable tension"
+    },
+    "classification_rule": [
+      "if s_n <= tau_accept => ACCEPT",
+      "if tau_accept < s_n < tau_reject => WAIT",
+      "if s_n >= tau_reject => REJECT"
+    ]
+  },
+  "context_robustness": {
+    "principle": "A gate decision must remain sufficiently invariant across admissible context perturbations.",
+    "checks": [
+      "parameter variation",
+      "noise realizations",
+      "model-form alternatives",
+      "measurement perturbations"
+    ],
+    "rule": "If classification is not robust across Gamma, commitment must not be hardened."
+  },
+  "pipeline": {
+    "stages": [
+      "observe",
+      "represent",
+      "evaluate informational drift",
+      "evaluate structural tension",
+      "probe context robustness",
+      "apply gate",
+      "couple, defer, damp, or decouple"
+    ],
+    "minimal_flow": [
+      "Observation",
+      "Representation",
+      "Stability Evaluation",
+      "Gate",
+      "Action / Deferral / Decoupling"
+    ]
+  },
+  "responsibility_gate": {
+    "name": "Gate(Responsibility, Power, Resonance)",
+    "meaning": "Release only where effect, reach, and consequence remain responsibly coupled.",
+    "questions": [
+      "Who carries the consequence?",
+      "What power is enabled by release or use?",
+      "How far does resonance propagate into other domains?",
+      "Does use remain coupled to the original claim?"
+    ]
+  },
+  "scientific_interfaces": {
+    "physics": {
+      "reading": "stability filter over model representations, not a new ontology",
+      "anchors": [
+        "Lyapunov-style stability thinking",
+        "open-system dynamics",
+        "coarse-grained state evaluation",
+        "threshold phenomena"
+      ]
+    },
+    "computer_science": {
+      "reading": "decision architecture for uncertain model states",
+      "anchors": [
+        "confidence gating",
+        "abstention",
+        "model monitoring",
+        "recursive consistency checking",
+        "supervisory logic"
+      ]
+    },
+    "systems_control": {
+      "reading": "meta-level supervisory regulator",
+      "anchors": [
+        "partially observed plants",
+        "state estimation under noise",
+        "safe-mode triggering",
+        "delayed commitment"
+      ]
+    }
+  },
+  "evaluation_questions": [
+    "Is the observed pattern signal, noise, or artifact?",
+    "Is representational drift bounded?",
+    "Is structural tension acceptable?",
+    "Is the gate decision robust across admissible contexts?",
+    "Should the system couple, wait, reject, or defer?",
+    "Is release or use still aligned with responsibility?"
+  ],
+  "example_case": {
+    "name": "overshoot",
+    "domain": "climate / resources / systemic budget",
+    "input_pattern": {
+      "drivers": [
+        "resource extraction",
+        "delayed return flows",
+        "accumulated emissions",
+        "infrastructure dependence"
+      ],
+      "observations": [
+        "persistent warming",
+        "coupled extremes",
+        "stress on transport and stability",
+        "lag between release and recovery"
+      ]
+    },
+    "tera_reading": {
+      "signal": [
+        "budget imbalance",
+        "persistent drift",
+        "coupled systemic stress"
+      ],
+      "noise": [
+        "isolated local event without context"
+      ],
+      "artifact": [
+        "confusing a single event with a total distribution shift"
+      ],
+      "gate": "ACCEPT_WAIT",
+      "reason": "Core systemic logic is strong, while local attribution and intervention paths may still require bounded context checking."
+    }
+  },
+  "repo_alignment": {
+    "intended_fit": [
+      "README for physicists",
+      "README for science",
+      "AI logic layer",
+      "resonance / regime / time / weather subspaces",
+      "future notebooks or Python demos"
+    ],
+    "usage": [
+      "reference schema",
+      "shared vocabulary",
+      "future parser target",
+      "benchmark test structure",
+      "bridge between README and implementation"
+    ]
+  }
+}
