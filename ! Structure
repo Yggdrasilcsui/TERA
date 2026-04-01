@@ -1,0 +1,126 @@
+### `0 ...`
+Entry layer:
+- README
+- science / physicists
+- epilog / prolog
+- initialization
+- JSON structure
+- first Python
+- visual entry files
+- formula image
+
+### `00 ...`
+Workbench layer:
+- Math
+- Logic
+- Regime
+- Resonance
+- Statement
+- Time stability
+- deeper breakdown
+
+### `Z ...` / `00 Z ...`
+Side-room layer:
+- humor
+- thinkroom
+- image metaphors
+- side branches
+- lighter carrier files
+
+### deeper `.py`
+Lower code layer:
+- additional Python files
+- meta logic
+- code variants
+- deeper operational artifacts
+
+---
+
+## Default path
+
+1. `0 README for Science.md`
+2. `0 README TERA for physicists`
+3. `0 TERA Epilog and Prolog`
+4. `0 tera_initialization.md`
+
+---
+
+## Structure path
+
+1. `0 tera_initialization.md`
+2. `0 TERA JSON Structure.txt`
+3. `0 TERA JSON Structure Long`
+4. `0 TERA JSON Structure state glossary`
+5. `0 TERA JSON Structure x Artifact Noise`
+6. `0 TERA Python Code`
+7. deeper `.py` files below
+
+---
+
+## Science path
+
+1. `0 README for Science.md`
+2. `0 README TERA for physicists`
+3. `00 TERA Statement Claim`
+4. `00 TERA Regime Stability`
+5. `00 TERA time stability`
+6. `00 TERA Resonance Model`
+
+---
+
+## Informatics path
+
+1. `0 tera_initialization.md`
+2. `0 TERA JSON Structure.txt`
+3. `0 TERA JSON Structure Long`
+4. `0 TERA Python Code`
+5. deeper `.py` files below
+6. `00 Math plus Logic`
+7. `00 TERA Statement Claim`
+
+---
+
+## Workbench path
+
+1. `0 TERA Epilog and Prolog`
+2. `00 Math`
+3. `00 Math plus`
+4. `00 Math plus Logic`
+5. `00 Math plus ext`
+6. `00 Math plus physics`
+7. `00 TERA Statement Claim`
+8. `00 TERA Regime Stability`
+9. `00 TERA time stability`
+10. `00 TERA Resonance Model`
+
+---
+
+## Visual / symbolic path
+
+Use after entry layer:
+- visual files
+- image metaphors
+- thinkroom
+- Z files
+- symbolic side branches
+
+---
+
+## Code path
+
+Top:
+- `0 TERA Python Code`
+
+Lower:
+- `tera_initialization.py`
+- `tera_meta_logic.py`
+- `tera_meta_logic_code.py`
+- further `.py` files below
+
+---
+
+## options
+
+Start with `0 ...`  
+Then `00 ...`  
+for break and lough `Z ...` / visuals / lower code
