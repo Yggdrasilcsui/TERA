@@ -1,0 +1,343 @@
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from enum import Enum
+from math import exp
+from typing import Dict, List, Literal, Tuple
+
+
+SpatialVector = Tuple[float, float, float]
+StateVector = Tuple[float, ...]
+PassMode = Literal["by_value", "by_ref"]
+
+
+class GateDecision(str, Enum):
+    ACCEPT = "ACCEPT"
+    WAIT = "WAIT"
+    DEFER = "DEFER"
+    REJECT = "REJECT"
+
+
+def subtract_vectors(a: SpatialVector, b: SpatialVector) -> SpatialVector:
+    return (a[0] - b[0], a[1] - b[1], a[2] - b[2])
+
+
+def squared_norm(vector: Tuple[float, ...]) -> float:
+    return sum(component * component for component in vector)
+
+
+def logistic(x: float) -> float:
+    return 1.0 / (1.0 + exp(-x))
+
+
+@dataclass(frozen=True)
+class IdentityCore:
+    """
+    Relatively stable reference core.
+
+    key:
+        Unique identity key.
+
+    label:
+        Human-readable identity label.
+
+    anchor:
+        Referential origin used to read positions relative to a stable point.
+
+    invariants:
+        Properties that should remain comparatively stable across state changes.
+    """
+    key: str
+    label: str
+    anchor: SpatialVector
+    invariants: Dict[str, float] = field(default_factory=dict)
+
+    def relative_vector(self, position: SpatialVector) -> SpatialVector:
+        return subtract_vectors(position, self.anchor)
+
+
+@dataclass
+class CouplingDependency:
+    """
+    Dependency between two state entities.
+
+    target_id:
+        Target entity key.
+
+    weight:
+        General importance of this dependency.
+
+    coupling_strength:
+        How strongly the dependency is coupled.
+
+    context_fit:
+        Local coherence of the dependency within its surrounding condition field.
+
+    recurrence_strength:
+        How strongly this dependency persists through recurrence.
+
+    mode:
+        by_value = local transfer without source feedback
+        by_ref   = coupled reference with source feedback character
+    """
+    target_id: str
+    weight: float = 1.0
+    coupling_strength: float = 1.0
+    context_fit: float = 1.0
+    recurrence_strength: float = 1.0
+    mode: PassMode = "by_ref"
+
+    def pressure(self) -> float:
+        reference_factor = 1.2 if self.mode == "by_ref" else 1.0
+        return (
+            self.weight
+            * self.coupling_strength
+            * self.context_fit
+            * self.recurrence_strength
+            * reference_factor
+        )
+
+
+@dataclass
+class StateEntity:
+    """
+    Concrete TERA entity in space.
+
+    identity:
+        Stable identity core of this entity.
+
+    position:
+        Spatial location.
+
+    tau:
+        Local time coordinate.
+
+    omega:
+        Temporal frequency / resonance.
+
+    information_density:
+        Local information density.
+
+    energy_density:
+        Local energy density.
+
+    perception:
+        Perceived state vector.
+
+    model:
+        Modeled state vector.
+
+    surrounding_field:
+        Logical translation of Umraum.
+        The surrounding condition field in which the state is embedded.
+
+    recurrence_field:
+        Logical translation of Umlauf.
+        The recurrence / feedback field through which the state repeats or returns.
+    """
+    identity: IdentityCore
+    position: SpatialVector
+    tau: float
+    omega: float
+    information_density: float
+    energy_density: float
+    perception: StateVector
+    model: StateVector
+    surrounding_field: float = 1.0
+    recurrence_field: float = 1.0
+    dependencies: List[CouplingDependency] = field(default_factory=list)
+
+    def body_vector_v3t3m9(self) -> Tuple[float, float, float, float, float]:
+        x, y, z = self.position
+        return (x, y, z, self.tau, self.omega)
+
+    def anchored_position(self) -> SpatialVector:
+        return self.identity.relative_vector(self.position)
+
+    def drift_vector(self) -> StateVector:
+        return tuple(model_value - perception_value for model_value, perception_value in zip(self.model, self.perception))
+
+    def drift_energy(self) -> float:
+        return squared_norm(self.drift_vector())
+
+    def dependency_load(self) -> float:
+        return sum(dependency.pressure() for dependency in self.dependencies)
+
+    def contextual_coherence(self) -> float:
+        return self.surrounding_field * self.recurrence_field
+
+    def coupling_potential(self, drift_penalty: float = 1.0) -> float:
+        """
+        Repo-near TERA form:
+
+            K = I * E * omega * kappa - lambda * V
+
+        where:
+            I = information density
+            E = energy density
+            omega = temporal resonance
+            kappa = contextual coherence
+            V = drift energy
+        """
+        kappa = self.contextual_coherence()
+        drift = self.drift_energy()
+        dependency_pressure = self.dependency_load()
+
+        return (
+            self.information_density
+            * self.energy_density
+            * self.omega
+            * kappa
+            - drift_penalty * drift
+            - dependency_pressure
+        )
+
+    def admissibility_density(self, eta: float = 1.0) -> float:
+        """
+        Local admissibility density:
+
+            mu = sigma(K * U * L - eta * V)
+
+        In this simplified implementation:
+            U ~ surrounding_field
+            L ~ recurrence_field
+        """
+        coupling = self.coupling_potential()
+        drift = self.drift_energy()
+
+        return logistic(
+            (coupling * self.surrounding_field * self.recurrence_field)
+            - (eta * drift)
+        )
+
+    def gate_decision(self) -> GateDecision:
+        """
+        Simple TERA gate logic.
+
+        Thresholds are intentionally coarse and should be treated as starting values,
+        not as final theory constants.
+        """
+        mu = self.admissibility_density()
+        drift = self.drift_energy()
+        coupling = self.coupling_potential()
+
+        if mu >= 0.85 and coupling > 0 and drift < 0.25:
+            return GateDecision.ACCEPT
+
+        if mu >= 0.55 and coupling > 0:
+            return GateDecision.WAIT
+
+        if mu >= 0.35:
+            return GateDecision.DEFER
+
+        return GateDecision.REJECT
+
+
+@dataclass
+class TeraWorld:
+    """
+    Small addressable TERA state space.
+
+    Holds entities, their reference cores, and their dependency structure.
+    """
+    entities: Dict[str, StateEntity] = field(default_factory=dict)
+
+    def add(self, entity: StateEntity) -> None:
+        self.entities[entity.identity.key] = entity
+
+    def get(self, key: str) -> StateEntity:
+        return self.entities[key]
+
+    def dependency_summary(self, source_id: str) -> Dict[str, float]:
+        source = self.get(source_id)
+        return {
+            dependency.target_id: dependency.pressure()
+            for dependency in source.dependencies
+        }
+
+    def state_snapshot(self, key: str) -> Dict[str, object]:
+        entity = self.get(key)
+
+        return {
+            "identity": entity.identity.label,
+            "anchor": entity.identity.anchor,
+            "position": entity.position,
+            "anchored_position": entity.anchored_position(),
+            "body_vector_v3t3m9": entity.body_vector_v3t3m9(),
+            "drift_vector": entity.drift_vector(),
+            "drift_energy": entity.drift_energy(),
+            "contextual_coherence": entity.contextual_coherence(),
+            "coupling_potential": entity.coupling_potential(),
+            "admissibility_density": entity.admissibility_density(),
+            "gate_decision": entity.gate_decision().value,
+            "dependency_load": entity.dependency_load(),
+        }
+
+
+if __name__ == "__main__":
+    self_identity = IdentityCore(
+        key="self",
+        label="Self / Artifact",
+        anchor=(0.0, 0.0, 0.0),
+        invariants={
+            "coherence": 0.9,
+            "memory": 0.8,
+        },
+    )
+
+    world_identity = IdentityCore(
+        key="world",
+        label="World / Terra",
+        anchor=(1.0, 0.0, 0.0),
+        invariants={
+            "resistance": 0.7,
+        },
+    )
+
+    self_entity = StateEntity(
+        identity=self_identity,
+        position=(0.3, 0.2, 0.1),
+        tau=1.0,
+        omega=0.8,
+        information_density=0.9,
+        energy_density=0.75,
+        perception=(0.2, 0.4, 0.6),
+        model=(0.3, 0.45, 0.55),
+        surrounding_field=0.85,
+        recurrence_field=0.9,
+        dependencies=[
+            CouplingDependency(
+                target_id="world",
+                weight=0.4,
+                coupling_strength=0.8,
+                context_fit=0.9,
+                recurrence_strength=0.7,
+                mode="by_ref",
+            )
+        ],
+    )
+
+    world_entity = StateEntity(
+        identity=world_identity,
+        position=(1.4, 0.1, 0.0),
+        tau=1.0,
+        omega=1.1,
+        information_density=0.7,
+        energy_density=0.95,
+        perception=(0.5, 0.5, 0.5),
+        model=(0.6, 0.45, 0.52),
+        surrounding_field=1.0,
+        recurrence_field=0.95,
+    )
+
+    tera_world = TeraWorld()
+    tera_world.add(self_entity)
+    tera_world.add(world_entity)
+
+    print("SELF SNAPSHOT")
+    for name, value in tera_world.state_snapshot("self").items():
+        print(f"{name}: {value}")
+
+    print("\nWORLD SNAPSHOT")
+    for name, value in tera_world.state_snapshot("world").items():
+        print(f"{name}: {value}")
