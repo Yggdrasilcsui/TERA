@@ -1,0 +1,483 @@
+## Anchor as Reference
+
+Within TERA, an anchor is not merely a point in space.  
+It is the **reference state** relative to which another state becomes readable.
+
+Let
+
+\[
+a \in \mathbb{R}^n
+\]
+
+be an anchor state, and let
+
+\[
+x \in \mathbb{R}^n
+\]
+
+be an observed state.
+
+Then the anchored form of \(x\) is
+
+\[
+r_a(x) = x - a.
+\]
+
+This is the minimal TERA reading of reference:
+
+- \(a\) is the anchor,
+- \(x\) is the state,
+- \(r_a(x)\) is the state as read relative to its anchor.
+
+Without an anchor, there is only position.  
+With an anchor, there is:
+
+- distance
+
+\[
+d_a(x)=\|x-a\|
+\]
+
+- direction
+
+\[
+r_a(x)=x-a
+\]
+
+- and relational orientation between states.
+
+For two states \(x_i\) and \(x_j\), both read relative to the same anchor \(a\), the angle between them is
+
+\[
+\cos(\theta_{ij})
+=
+\frac{\langle x_i-a,\;x_j-a\rangle}{\|x_i-a\|\,\|x_j-a\|}
+\]
+
+This means that the anchor does not merely mark a location.  
+It creates a readable frame in which states can be compared by:
+
+- separation,
+- orientation,
+- and coherence.
+
+In TERA, this matters because a state is not interpreted absolutely.  
+It is interpreted **through its relation to a reference**.
+
+That is why the anchor is its reference.
+
+### TERA Reading
+
+An anchor makes position relational.  
+It turns a point into a readable state.
+
+In compact form:
+
+\[
+\boxed{
+\text{Anchor} = a,
+\qquad
+\text{Reference map} = r_a(x)=x-a
+}
+\]
+
+### One-Sentence Definition
+
+**In TERA, an anchor is the reference state relative to which position, direction, distance, and relation become readable.**
+
+
+## Anchor
+
+In TERA, an anchor is a reference state.
+
+Let
+
+\[
+a \in \mathbb{R}^n
+\]
+
+be an anchor and
+
+
+
+\[
+x \in \mathbb{R}^n
+\]
+
+a state. Then the anchored reading of that state is
+
+\[
+r_a(x)=x-a.
+\]
+
+Without an anchor, there is only position.  
+With an anchor, there is distance, direction, and relation.
+## Point, Line, and Convergence
+
+Within TERA, point, line, and convergence are not only geometric objects.  
+They describe successive stages of relational readability.
+
+A point is not yet a full relation.  
+It is a **set position**.
+
+A line is not yet a full space.  
+It is a **relation between positions**.
+
+Convergence is not merely movement.  
+It is the process by which multiple positions, directions, or states begin to share a common structure.
+
+### 1. Point
+
+Let
+
+\[
+p \in \mathbb{R}^n
+\]
+
+be a point.
+
+In TERA, a point is the minimal readable placement of a state.  
+On its own, it marks presence, but not yet relation.
+
+A point becomes meaningful when it is anchored.
+
+Given an anchor
+
+\[
+a \in \mathbb{R}^n
+\]
+
+the point is read through its anchored form
+
+\[
+r_a(p)=p-a.
+\]
+
+Thus, a point is not only a location.  
+It is a position relative to a reference.
+
+### 2. Line
+
+Let two points
+
+\[
+p_1, p_2 \in \mathbb{R}^n
+\]
+
+be given.
+
+Then the line relation between them is expressed by
+
+\[
+\ell(t)=p_1+t(p_2-p_1), \qquad t \in \mathbb{R}.
+\]
+
+In TERA, this line is more than a geometric connection.  
+It is the first explicit readable relation between states.
+
+The difference vector
+
+\[
+v = p_2-p_1
+\]
+
+defines:
+
+- direction,
+- magnitude,
+- and the possibility of transition.
+
+Thus:
+
+- the point sets position,
+- the line sets relation.
+
+### 3. Convergence
+
+Let multiple states
+
+\[
+p_1, p_2, \dots, p_m \in \mathbb{R}^n
+\]
+
+be given.
+
+Convergence means that these states do not remain merely separate, but move toward a shared structure.
+
+A minimal geometric condition of convergence can be expressed by shrinking pairwise distances:
+
+\[
+\|p_i(\tau)-p_j(\tau)\| \to 0
+\qquad \text{as } \tau \to \tau^\ast
+\]
+
+for relevant pairs \(i,j\).
+
+But in TERA, convergence is not limited to spatial coincidence.  
+It may also mean convergence of:
+
+- direction,
+- coupling,
+- admissibility,
+- recurrence,
+- or structural coherence.
+
+This can be measured, for example, by directional alignment relative to an anchor:
+
+\[
+\cos(\theta_{ij})=
+\frac{\langle p_i-a,\;p_j-a\rangle}{\|p_i-a\|\,\|p_j-a\|}
+\to 1.
+\]
+
+Thus, convergence means that multiple states begin to share a common readable orientation.
+
+### 4. TERA Reading
+
+In TERA, point, line, and convergence describe a logical progression:
+
+- **Point** = set position
+- **Line** = readable relation
+- **Convergence** = emergence of shared form
+
+This progression matters because TERA does not read structure as static.  
+It reads structure as something that becomes legible through placement, relation, and eventual coherence.
+
+### 5. Compact Summary
+
+\[
+p \in \mathbb{R}^n
+\qquad \text{(point)}
+\]
+
+\[
+\ell(t)=p_1+t(p_2-p_1)
+\qquad \text{(line)}
+\]
+
+\[
+\|p_i(\tau)-p_j(\tau)\| \to 0
+\quad \text{or} \quad
+\cos(\theta_{ij}) \to 1
+\qquad \text{(convergence)}
+\]
+
+### 6. One-Sentence Definition
+
+**In TERA, a point sets position, a line makes relation readable, and convergence describes the emergence of shared structure across states.**
+
+
+
+An anchor therefore does not merely locate a state.  
+It makes the state readable relative to a reference.
+
+
+## Point, Line, and Convergence
+
+In TERA, a point is a set position, a line is a readable relation between positions, and convergence is the emergence of shared structure.
+
+A point \(p\) becomes meaningful relative to an anchor \(a\) through
+
+\[
+r_a(p)=p-a.
+\]
+
+A line between two points is given by
+
+\[
+\ell(t)=p_1+t(p_2-p_1).
+\]
+
+Convergence occurs when states become increasingly aligned in distance, direction, or coherence. TERA therefore reads geometry not only as shape, but as the progression from placement to relation to shared form.
+
+## Polygon, Circle, Sphere, and Possibility
+
+Within TERA, polygon, circle, and sphere are not only geometric forms.  
+They describe progressively richer ways in which direction, relation, and possibility become readable.
+
+A polygon gives a **finite directional structure**.  
+A circle gives a **continuous directional field in a plane**.  
+A sphere gives a **continuous directional field in space**.
+
+This progression matters because TERA does not treat possibility as vague openness.  
+It treats possibility as a structured field of reachable, relatable, and orientable states.
+
+### 1. Polygon
+
+Let a regular \(n\)-gon be centered at an anchor point
+
+\[
+a \in \mathbb{R}^2.
+\]
+
+The polygon provides a finite set of meaningful directions around that anchor.
+
+A minimal directional set may be written as
+
+\[
+\Delta_n = \left\{ \theta_k = \frac{k\pi}{n} \;\middle|\; k=0,1,\dots,2n-1 \right\}.
+\]
+
+This gives \(2n\) alternating directions if both vertex-directions and side-normal directions are considered.
+
+In TERA, this means:
+
+- a polygon discretizes directional logic,
+- it turns orientation into a finite readable set,
+- it provides a first structured approximation of a possibility field.
+
+Thus, a polygon is not only a shape.  
+It is a bounded directional grammar.
+
+### 2. Circle
+
+As \(n \to \infty\), the directional logic of the regular polygon approaches the circle
+
+\[
+S^1 = \{(\cos\theta,\sin\theta)\mid \theta \in [0,2\pi)\}.
+\]
+
+The circle no longer selects a few meaningful directions.  
+It closes the directional field into complete planar continuity.
+
+In TERA, this means:
+
+- all planar orientations become available,
+- possibility is no longer sampled discretely,
+- direction becomes continuous around an anchor.
+
+Thus, the circle is the first complete field of planar possibility.
+
+### 3. Sphere
+
+To move from the plane into full spatial directionality, TERA extends the circle into the sphere
+
+\[
+S^2 = \{x \in \mathbb{R}^3 \mid \|x\|=1\}.
+\]
+
+The sphere represents complete directional availability in space.
+
+This means:
+
+- every direction can be referenced,
+- every orientation becomes part of the state field,
+- possibility is no longer planar only, but volumetric in reference.
+
+In this sense, the sphere is the closure of directional possibility around an anchor in three dimensions.
+
+### 4. Possibility as Structured Availability
+
+TERA does not define possibility as abstract logical openness alone.  
+Possibility must be weighted by accessibility, coherence, and relation.
+
+Let
+
+\[
+A_x(\omega) : S^1 \to [0,1]
+\]
+
+in the planar case, or
+
+\[
+A_x(\omega) : S^2 \to [0,1]
+\]
+
+in the spatial case, denote a local availability function.
+
+Then:
+
+- \(A_x(\omega)=0\) means a direction is unavailable or blocked,
+- \(A_x(\omega)=1\) means a direction is fully available.
+
+This means that possibility is not empty geometry.  
+It is a weighted directional field.
+
+### 5. Umraum and Umlauf
+
+In TERA, possibility is never only spatial.  
+It is shaped by context and recurrence.
+
+Let
+
+\[
+U_x(\omega)
+\]
+
+denote Umraum as contextual availability, and
+
+\[
+L_x(\omega,\tau)
+\]
+
+denote Umlauf as recurrence, rhythm, or feedback over time.
+
+Then directional possibility becomes more precise as
+
+\[
+\Pi_x(\omega,\tau)=A_x(\omega)\,U_x(\omega)\,L_x(\omega,\tau).
+\]
+
+This means:
+
+- direction alone is not enough,
+- availability alone is not enough,
+- recurrence alone is not enough,
+- possibility becomes meaningful only when direction, context, and recurrence are read together.
+
+### 6. From Direction to Admissibility
+
+A gate can then evaluate whether a direction within the possibility field may actually become transition.
+
+\[
+u(x,\omega,\tau)=G\big(\Pi_x(\omega,\tau),D_x(\omega,\tau)\big)
+\]
+
+with
+
+\[
+u(x,\omega,\tau)\in\{\mathrm{ACCEPT},\mathrm{WAIT},\mathrm{DEFER},\mathrm{REJECT}\}.
+\]
+
+This means that TERA does not merely ask whether a direction exists.  
+It asks whether that direction is structurally admissible.
+
+### 7. TERA Reading
+
+Taken together, the progression is:
+
+- **Polygon** = discrete directional logic
+- **Circle** = complete planar possibility
+- **Sphere** = complete spatial possibility
+
+And possibility itself is not mere openness, but weighted directional availability relative to an anchor.
+
+### 8. Compact Summary
+
+\[
+\Delta_n = \left\{ \frac{k\pi}{n} \right\}
+\qquad \text{(polygonal directional set)}
+\]
+
+\[
+S^1
+\qquad \text{(continuous planar directionality)}
+\]
+
+\[
+S^2
+\qquad \text{(continuous spatial directionality)}
+\]
+
+\[
+\Pi_x(\omega,\tau)=A_x(\omega)\,U_x(\omega)\,L_x(\omega,\tau)
+\qquad \text{(weighted possibility field)}
+\]
+
+### 9. One-Sentence Definition
+
+**In TERA, polygon, circle, and sphere describe the progression from discrete directional structure to continuous fields of possibility, always relative to an anchor and weighted by availability, context, and recurrence.**
+
+## Polygon, Circle, Sphere, and Possibility
+
+In TERA, a polygon provides a finite directional structure, a circle provides complete planar directionality, and a sphere provides complete spatial directionality. This progression turns possibility into a readable field rather than an abstract openness. Relative to an anchor, possibility is weighted by availability, context, and recurrence, so that not every direction is equally admissible. TERA therefore reads possibility geometrically: as structured directional availability under coupling and time.
