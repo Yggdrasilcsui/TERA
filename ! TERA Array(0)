@@ -1,0 +1,194 @@
+## Boolean Hypercube, Array(0), and Addressable State Space
+
+Within TERA, the hypercube is not only a higher-dimensional geometric object.  
+It can be read as a **boolean state body**: a structured space in which logical axes are discretized into visible on/off distinctions, while gating evaluates whether their combinations are admissible, stable, or premature.
+
+This is why the hypercube matters in TERA: it makes a multi-axis state space addressable.
+
+### 1. Boolean Axes
+
+Let each logical axis be represented by a binary variable
+
+\[
+x_i \in \{0,1\}, \qquad i=1,\dots,n.
+\]
+
+Then the full state space is
+
+\[
+H_n = \{0,1\}^n.
+\]
+
+This is the \(n\)-dimensional boolean hypercube.
+
+In TERA, this means:
+
+- each axis represents a visible distinction,
+- each coordinate encodes whether a condition is set or not set,
+- the hypercube contains all combinatorial configurations of these discrete logical axes.
+
+A boolean hypercube is therefore not mere geometry.  
+It is the closure of discrete logical dimensions into an addressable state space.
+
+### 2. Array(0) as Referential Origin
+
+Let
+
+\[
+0_n = (0,0,\dots,0)\in H_n
+\]
+
+denote the zero vertex of the hypercube.
+
+In TERA, this vertex can be read as **Array(0)**:
+the initial referential entry from which all other states become addressable.
+
+This does not mean that Array(0) is the “true” state in an absolute sense.  
+It means that it functions as the **first readable anchor** of the discrete state space.
+
+Thus:
+
+- Array(0) is the referential origin,
+- the hypercube is the structured set of reachable logical combinations,
+- every other state becomes interpretable relative to that origin.
+
+### 3. Hamming Structure and State Difference
+
+Two states
+
+\[
+x,y \in H_n
+\]
+
+can be compared by their Hamming distance:
+
+\[
+d_H(x,y)=\sum_{i=1}^n |x_i-y_i|.
+\]
+
+This counts how many axes differ between the two states.
+
+In TERA, the Hamming distance gives a minimal discrete measure of structural difference:
+
+- small Hamming distance means local state variation,
+- large Hamming distance means broader state displacement.
+
+This is useful because it makes discrete drift measurable inside the boolean body.
+
+### 4. Hypercube as Logical Body
+
+The boolean hypercube is a body because it closes many axes into one readable structure.
+
+Examples:
+
+- \(H_1\): line segment
+- \(H_2\): square
+- \(H_3\): cube
+- \(H_4\): tesseract
+- \(H_n\): higher-dimensional boolean body
+
+This matters because TERA often works with state conditions that are not continuous first, but **set / not set**, **coupled / not coupled**, **available / blocked**, **stable / unstable**, **triggered / not triggered**.
+
+The hypercube is therefore the natural body of discrete state composition.
+
+### 5. Why the Hypercube Is Not Enough
+
+A boolean hypercube alone only tells us which combinations are possible in a combinatorial sense.  
+It does **not** yet tell us whether they are:
+
+- viable,
+- stable,
+- contextually admissible,
+- temporally sustainable.
+
+This is where TERA goes beyond pure boolean structure.
+
+The hypercube is the state body.  
+The gate is the admissibility logic.
+
+### 6. Gate on the Hypercube
+
+Let
+
+\[
+x \in H_n
+\]
+
+be a boolean state configuration.  
+Then the gate may be written as
+
+\[
+u(x)=G(x,U,L,D)
+\]
+
+with
+
+\[
+u(x)\in\{\mathrm{ACCEPT},\mathrm{WAIT},\mathrm{DEFER},\mathrm{REJECT}\}.
+\]
+
+Here:
+
+- \(x\) is the boolean configuration,
+- \(U\) is Umraum,
+- \(L\) is Umlauf,
+- \(D\) is drift.
+
+This means that TERA does not ask only whether a boolean state exists.  
+It asks whether that state is admissible under contextual field, recurrence, and structural stability.
+
+### 7. Addressable State Space
+
+The hypercube becomes an **addressable state space** because each state can be uniquely referenced by its binary coordinates.
+
+Thus, the TERA reading is:
+
+- the hypercube provides discrete logical addressability,
+- Array(0) provides the referential starting point,
+- Hamming structure provides measurable difference,
+- the gate provides admissibility.
+
+This turns the hypercube from a combinatorial object into a TERA-relevant decision body.
+
+### 8. TERA Reading
+
+Taken together:
+
+- **boolean axes** define visible distinctions,
+- **Array(0)** defines the referential origin,
+- **the hypercube** defines the bounded body of combinations,
+- **Hamming distance** defines discrete difference,
+- **the gate** defines admissibility.
+
+Thus, TERA does not merely use the hypercube as a mathematical curiosity.  
+It uses it as a readable model of discrete coupled state space.
+
+### 9. Compact Summary
+
+\[
+H_n = \{0,1\}^n
+\qquad \text{(boolean hypercube)}
+\]
+
+\[
+0_n = (0,0,\dots,0)
+\qquad \text{(Array(0), referential origin)}
+\]
+
+\[
+d_H(x,y)=\sum_{i=1}^n |x_i-y_i|
+\qquad \text{(discrete state difference)}
+\]
+
+\[
+u(x)=G(x,U,L,D)
+\qquad \text{(admissibility over boolean state)}
+\]
+
+### 10. One-Sentence Definition
+
+**In TERA, the boolean hypercube is the body of discrete logical combinations, Array(0) is its referential origin, and the gate decides which addressable states are actually admissible.**
+
+## Boolean Hypercube, Array(0), and Addressable State Space
+
+In TERA, the boolean hypercube \(H_n=\{0,1\}^n\) represents the body of discrete logical combinations. Each axis encodes a visible distinction, and each vertex is an addressable state. Array(0), given by \(0_n=(0,0,\dots,0)\), functions as the referential origin from which all other states become readable. Hamming distance measures discrete state difference, while the gate determines whether a given boolean configuration is admissible under drift, Umraum, and Umlauf.
