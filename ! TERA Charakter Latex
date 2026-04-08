@@ -1,0 +1,237 @@
+\section{v3t3m9 State Logic: Identity, Entity, and Admissibility}
+
+Within TERA, v3t3m9 can be formalized as a state logic in which identity provides reference, entity provides instantiation, dependency provides coupling, and gating decides admissible transition in space.
+
+\subsection{Identity Core}
+
+Let
+\[
+a \in \mathbb{R}^3
+\]
+be an anchor, and let an identity core be defined as
+\[
+\mathcal{I} = (k, \ell, a, \Xi),
+\]
+where
+\begin{itemize}
+    \item $k$ is a unique identity key,
+    \item $\ell$ is a human-readable label,
+    \item $a$ is the spatial anchor,
+    \item $\Xi$ is the set of relatively stable invariants.
+\end{itemize}
+
+For any spatial position
+\[
+x \in \mathbb{R}^3,
+\]
+the anchored relative position is
+\[
+r_a(x) = x - a.
+\]
+
+Thus, identity does not merely name a state; it provides the referential origin relative to which that state becomes readable.
+
+\subsection{State Entity}
+
+A concrete TERA entity is defined as
+\[
+\mathcal{E} =
+(\mathcal{I}, x, \tau, \omega, I, E, P, M, U, L, \mathcal{D}),
+\]
+where
+\begin{itemize}
+    \item $\mathcal{I}$ is the identity core,
+    \item $x \in \mathbb{R}^3$ is spatial position,
+    \item $\tau \in \mathbb{R}_{\ge 0}$ is local time,
+    \item $\omega \in \mathbb{R}_{\ge 0}$ is temporal frequency / resonance,
+    \item $I \ge 0$ is information density,
+    \item $E \ge 0$ is energy density,
+    \item $P \in \mathbb{R}^n$ is the perception state vector,
+    \item $M \in \mathbb{R}^n$ is the model state vector,
+    \item $U \ge 0$ is the surrounding condition field (Umraum),
+    \item $L \ge 0$ is the recurrence field (Umlauf),
+    \item $\mathcal{D}$ is the set of dependencies.
+\end{itemize}
+
+The v3t3m9 body vector of the entity is
+\[
+b(\mathcal{E}) = (x_1, x_2, x_3, \tau, \omega).
+\]
+
+\subsection{Drift and Drift Energy}
+
+The local drift vector is defined as
+\[
+C = M - P.
+\]
+
+The corresponding drift energy is
+\[
+V = \|C\|^2.
+\]
+
+Thus, drift measures the model--perception mismatch, while drift energy measures its magnitude.
+
+\subsection{Coupling Dependency}
+
+A coupling dependency may be written as
+\[
+d_j = (t_j, w_j, c_j, \kappa_j, \rho_j, m_j),
+\]
+where
+\begin{itemize}
+    \item $t_j$ is the target identity,
+    \item $w_j$ is the dependency weight,
+    \item $c_j$ is coupling strength,
+    \item $\kappa_j$ is contextual fit,
+    \item $\rho_j$ is recurrence strength,
+    \item $m_j \in \{\text{by\_value}, \text{by\_ref}\}$ is the pass mode.
+\end{itemize}
+
+Its local pressure contribution is
+\[
+p(d_j) = w_j c_j \kappa_j \rho_j \chi(m_j),
+\]
+where
+\[
+\chi(m_j) =
+\begin{cases}
+1.2, & \text{if } m_j = \text{by\_ref},\\
+1.0, & \text{if } m_j = \text{by\_value}.
+\end{cases}
+\]
+
+The total dependency load of the entity is
+\[
+P_{\mathrm{dep}} = \sum_{d_j \in \mathcal{D}} p(d_j).
+\]
+
+\subsection{Contextual Coherence}
+
+The local contextual coherence is defined as
+\[
+\kappa_{\mathrm{ctx}} = U \cdot L.
+\]
+
+This expresses the combined effect of surrounding condition and recurrence.
+
+\subsection{Coupling Potential}
+
+The local TERA coupling potential is defined as
+\[
+K = I E \omega \kappa_{\mathrm{ctx}} - \lambda V - P_{\mathrm{dep}},
+\]
+where $\lambda > 0$ is a drift penalty parameter.
+
+This means that admissibility increases with information, energy, temporal resonance, and contextual coherence, but decreases with drift and dependency load.
+
+\subsection{Admissibility Density}
+
+The local admissibility density is defined as
+\[
+\mu = \sigma\big(K U L - \eta V\big),
+\]
+where
+\[
+\sigma(z) = \frac{1}{1+e^{-z}}
+\]
+is the logistic normalization function, and $\eta > 0$ weights drift energy.
+
+Thus:
+\begin{itemize}
+    \item high $\mu$ indicates local admissibility,
+    \item low $\mu$ indicates local instability or non-admissibility.
+\end{itemize}
+
+\subsection{Gate Decision}
+
+The gate decision is defined as
+\[
+u = G(\mu, K, V),
+\]
+with
+\[
+u \in \{\mathrm{ACCEPT}, \mathrm{WAIT}, \mathrm{DEFER}, \mathrm{REJECT}\}.
+\]
+
+A simple threshold form may be written as
+\[
+u =
+\begin{cases}
+\mathrm{ACCEPT}, & \mu \ge 0.85,\; K>0,\; V<0.25,\\[4pt]
+\mathrm{WAIT}, & \mu \ge 0.55,\; K>0,\\[4pt]
+\mathrm{DEFER}, & \mu \ge 0.35,\\[4pt]
+\mathrm{REJECT}, & \text{otherwise.}
+\end{cases}
+\]
+
+This means that the gate does not decide from information alone, but from admissibility under coupling, contextual coherence, recurrence, and drift.
+
+\subsection{World as Addressable State Space}
+
+Let the TERA world be defined as
+\[
+\mathcal{W} = \{\mathcal{E}_1, \mathcal{E}_2, \dots, \mathcal{E}_m\},
+\]
+an addressable set of entities indexed by their identity keys.
+
+A state snapshot of an entity $\mathcal{E}$ can then be written as
+\[
+S(\mathcal{E}) =
+\big(
+\mathcal{I},
+a,
+x,
+r_a(x),
+b(\mathcal{E}),
+C,
+V,
+\kappa_{\mathrm{ctx}},
+K,
+\mu,
+u,
+P_{\mathrm{dep}}
+\big).
+\]
+
+\subsection{One-Sentence Reading}
+
+v3t3m9 is the hard-coded TERA state logic in which identity provides reference, entity provides instantiation, dependency provides coupling, and gating decides admissible transition within a spatiotemporal body of drift, coherence, and recurrence.
+
+
+\[
+\mathcal{E} =
+(\mathcal{I}, x, \tau, \omega, I, E, P, M, U, L, \mathcal{D})
+\]
+
+\[
+r_a(x)=x-a
+\]
+
+\[
+C=M-P
+\]
+
+\[
+V=\|C\|^2
+\]
+
+\[
+\kappa_{\mathrm{ctx}}=U\cdot L
+\]
+
+\[
+P_{\mathrm{dep}}=\sum_{d_j\in\mathcal{D}} p(d_j)
+\]
+
+\[
+K=IE\omega\kappa_{\mathrm{ctx}}-\lambda V-P_{\mathrm{dep}}
+\]
+
+\[
+\mu=\sigma(KUL-\eta V)
+\]
+
+\[
+u=G(\mu,K,V)\in\{\mathrm{ACCEPT},\mathrm{WAIT},\mathrm{DEFER},\mathrm{REJECT}\}
+\]
