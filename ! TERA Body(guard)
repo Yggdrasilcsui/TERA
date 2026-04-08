@@ -1,0 +1,298 @@
+## The TERA Body (v3t3m9)
+
+Within TERA, the system can be described as a **5-axis body**: a coupled formal space in which spatial position, time, frequency, information, and energy interact under drift and gated admissibility.
+
+This is **not** proposed as established physics.  
+It is a **TERA-internal formal model**: a structured way to describe how states move, couple, drift, stabilize, and become admissible over time.
+
+### 1. Minimal Repo Core
+
+The minimal TERA quantities are already present in the repo:
+
+\[
+A(t) = \text{perception space}, \qquad
+B(t) = \text{model space}, \qquad
+C(t) = B(t) - A(t)
+\]
+
+where \(C(t)\) is the drift between perception and model.
+
+Its corresponding stability measure is
+
+\[
+V(t) = \|C(t)\|^2
+\]
+
+with the desired condition that
+
+\[
+\Delta V(t) \le 0
+\]
+
+or at least that \(V(t)\) remains bounded.
+
+The gate is introduced as a discrete controller:
+
+\[
+u(t) = \mathrm{Gate}(I,E,\omega)
+\]
+
+and the repo-near state transition can be summarized as
+
+\[
+\Delta S = \mathrm{Gate}(I \cdot E \cdot \omega).
+\]
+
+This already implies the central TERA claim:
+
+- information is not decorative,
+- energy is not decorative,
+- time / frequency is not decorative,
+
+but all three form the **operative coupling** through which state transition is either admitted, delayed, or rejected.
+
+---
+
+### 2. The 5-Axis TERA Body
+
+To formalize this more strictly, define a spatiotemporal state space
+
+\[
+\mathcal X = \mathbb{R}^3 \times \mathbb{R}_{\ge 0} \times \mathbb{R}_{\ge 0}
+\]
+
+with coordinates
+
+- \(x \in \mathbb{R}^3\): spatial position,
+- \(\tau \in \mathbb{R}_{\ge 0}\): local time,
+- \(\omega \in \mathbb{R}_{\ge 0}\): temporal frequency / resonance.
+
+This is the formal TERA reading of the 5-axis body:
+**3 spatial dimensions + time + frequency/resonance**.
+
+On this space define the following fields:
+
+\[
+I(x,\tau) \ge 0
+\qquad \text{information density}
+\]
+
+\[
+E(x,\tau) \ge 0
+\qquad \text{energy density}
+\]
+
+\[
+P(x,\tau)
+\qquad \text{perception field}
+\]
+
+\[
+M(x,\tau)
+\qquad \text{model field}
+\]
+
+\[
+C(x,\tau)=M(x,\tau)-P(x,\tau)
+\qquad \text{local drift}
+\]
+
+\[
+U(x,\tau)
+\qquad \text{Umraum / availability field}
+\]
+
+\[
+L(x,\tau)
+\qquad \text{Umlauf / recurrence field}
+\]
+
+The TERA body is therefore not a fixed object, but a **field-structured body of state, relation, and admissibility**.
+
+---
+
+### 3. Motion of Information and Energy
+
+If information and energy move and exchange, then they require flow equations.
+
+Define
+
+\[
+J_I(x,\tau)
+\qquad \text{information flux}
+\]
+
+\[
+J_E(x,\tau)
+\qquad \text{energy flux}
+\]
+
+and write their transport as
+
+\[
+\partial_\tau I + \nabla \cdot J_I = Q_I
+\]
+
+\[
+\partial_\tau E + \nabla \cdot J_E = Q_E
+\]
+
+where \(Q_I\) and \(Q_E\) are source / sink terms.
+
+This means:
+
+- information changes not only locally, but through transport,
+- energy changes not only locally, but through transport,
+- both participate in a dynamic field rather than a static inventory.
+
+A more explicit drift-diffusion form may be written as
+
+\[
+J_I = -\alpha_I \nabla I + \beta_I I v
+\]
+
+\[
+J_E = -\alpha_E \nabla E + \beta_E E v
+\]
+
+where
+
+- \(\alpha_I,\alpha_E\): diffusion parameters,
+- \(\beta_I,\beta_E\): directed transport parameters,
+- \(v(x,\tau)\): local motion field.
+
+---
+
+### 4. Coupling of Information, Energy, and Time
+
+A local coupling potential can now be defined as
+
+\[
+K(x,\tau)=I(x,\tau)\,E(x,\tau)\,\omega(x,\tau)\,\kappa(x,\tau)-\lambda \|C(x,\tau)\|^2
+\]
+
+where
+
+- \(\kappa(x,\tau)\): contextual fit / local coherence,
+- \(\lambda > 0\): drift penalty.
+
+This gives a more precise TERA reading of the repo-near term
+
+\[
+I \cdot E \cdot \omega.
+\]
+
+Interpretation:
+
+- high information alone is insufficient,
+- high energy alone is insufficient,
+- high temporal intensity alone is insufficient,
+- only their coupled simultaneity raises admissibility,
+- excessive drift lowers the local coupling potential.
+
+---
+
+### 5. Gate as Admissibility of State Transition
+
+The gate is the operational decision layer:
+
+\[
+u(x,\tau)=G\big(K(x,\tau),U(x,\tau),L(x,\tau)\big)
+\]
+
+with
+
+\[
+u(x,\tau)\in\{\mathrm{ACCEPT},\mathrm{WAIT},\mathrm{DEFER},\mathrm{REJECT}\}.
+\]
+
+This means that TERA does **not** decide from information alone.
+
+The gate evaluates:
+
+1. **coupling** \(K\),
+2. **Umraum** \(U\) as local availability / placement,
+3. **Umlauf** \(L\) as recurrence / temporal rhythm.
+
+This is where TERA becomes stronger than a simple binary rule:
+a locally strong signal is not automatically admissible.  
+It must also be spatially viable and temporally sustainable.
+
+---
+
+### 6. Local Space Structure
+
+TERA does not need to claim physical spacetime curvature.  
+A more careful internal formalization is to introduce a local space-structure field
+
+\[
+\Gamma(x,\tau)
+\]
+
+which describes how accessible, coupled, resistant, or deformable the local decision space is.
+
+Its evolution may be written as
+
+\[
+\partial_\tau \Gamma
+=
+a\,I\,E
++
+b\,\nabla\cdot(J_I+J_E)
+-
+c\,\Gamma
+\]
+
+with \(a,b,c>0\).
+
+Interpretation:
+
+- coupled information-energy density reshapes local structure,
+- flux changes the local structure field,
+- relaxation prevents indefinite buildup.
+
+In this sense, information does not merely sit in space.  
+Under TERA, it contributes to the **local admissibility structure** of the state space itself.
+
+---
+
+### 7. Compact TERA-v3t3m9 Form
+
+In compact form, the TERA body can be written as
+
+\[
+\boxed{
+\begin{aligned}
+C(x,\tau) &= M(x,\tau)-P(x,\tau) \\
+V(x,\tau) &= \|C(x,\tau)\|^2 \\
+K(x,\tau) &= I(x,\tau)\,E(x,\tau)\,\omega(x,\tau)\,\kappa(x,\tau)-\lambda V(x,\tau) \\
+u(x,\tau) &= G\big(K(x,\tau),U(x,\tau),L(x,\tau)\big) \\
+\partial_\tau \Gamma(x,\tau) &= a\,I\,E + b\,\nabla\cdot(J_I+J_E)-c\,\Gamma
+\end{aligned}
+}
+\]
+
+This reads as:
+
+- drift measures model–perception difference,
+- stability measures drift energy,
+- coupling measures information × energy × time under coherence and drift penalty,
+- the gate decides admissibility,
+- the local space structure responds to coupled information-energy motion.
+
+---
+
+### 8. One-Sentence Reading
+
+**TERA models information processing as a spatiotemporally coupled drift logic in which information and energy move through time, interact through resonance, and jointly shape the admissibility of local state transition.**
+
+---
+
+### 9. Scope
+
+This is strong as a **TERA model**.  
+It is workable as **whitepaper mathematics**.  
+It is **not claimed here as established physical law**.
+
+Its purpose is to provide a formal extension:
+a dynamic coupling model and a state-space interpretation of information-energy-time interaction under drift and gating.
