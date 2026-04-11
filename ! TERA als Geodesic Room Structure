@@ -1,0 +1,283 @@
+# TERA: Mathematical Framing
+
+TERA models decision-making as geodesic pathfinding through a semantically distorted space.
+
+The core idea is simple:
+
+A system should not optimize for naive shortest distance alone.  
+It should optimize for the most coherent trajectory through a space distorted by artifacts and residual noise.
+
+---
+
+## 1. State Space
+
+Let
+
+- \( M \) be a state space  
+  (for example a manifold, embedding space, or weighted graph),
+- \( x_0 \in M \) the initial state,
+- \( x_g \in M \) the goal state.
+
+A path is a curve
+
+\[
+\gamma : [0,1] \to M
+\]
+
+with boundary conditions
+
+\[
+\gamma(0)=x_0, \qquad \gamma(1)=x_g
+\]
+
+---
+
+## 2. Distortion Fields
+
+TERA assumes that movement through semantic or decision space is not neutral.
+
+We define:
+
+- \( A(x) \ge 0 \): **artifact field**  
+  structural distortion, legacy bias, historical residue, local deformation
+
+- \( R(x) \ge 0 \): **residual noise field**  
+  uncertainty, stochastic interference, signal contamination
+
+- \( K(x, x_g) \ge 0 \): **goal coherence**  
+  alignment of a local state \(x\) with the intended target \(x_g\)
+
+---
+
+## 3. Local Geometry
+
+Let
+
+\[
+G(x)
+\]
+
+be a positive-definite metric tensor on \(M\).
+
+This metric defines the local movement cost.  
+In simple flat settings, \(G(x)=I\).  
+In distorted settings, \(G(x)\) may vary over space.
+
+A convenient artifact-sensitive form is:
+
+\[
+G(x) = I + \lambda H_A(x)
+\]
+
+where
+
+- \(I\) is the baseline metric,
+- \(H_A(x)\) is an artifact-induced deformation term,
+- \(\lambda \ge 0\) controls distortion strength.
+
+This means artifacts do not only add cost.  
+They can bend the space itself.
+
+---
+
+## 4. TERA Objective Functional
+
+TERA selects the path \( \gamma^\* \) minimizing total logical cost:
+
+\[
+\gamma^\*
+=
+\arg\min_{\gamma}
+J[\gamma]
+\]
+
+with
+
+\[
+J[\gamma]
+=
+\int_0^1
+\left(
+\|\dot\gamma(t)\|_{G(\gamma(t))}^2
++
+\alpha A(\gamma(t))
++
+\beta R(\gamma(t))
+-
+\mu K(\gamma(t),x_g)
+\right)\,dt
+\]
+
+where
+
+- \( \|\dot\gamma(t)\|_{G(\gamma(t))}^2 \) is local movement cost,
+- \( \alpha \ge 0 \) weights artifact sensitivity,
+- \( \beta \ge 0 \) weights residual-noise sensitivity,
+- \( \mu \ge 0 \) weights goal coherence.
+
+### Interpretation
+
+TERA minimizes:
+
+- path effort,
+- artifact exposure,
+- residual noise,
+
+while maximizing:
+
+- directional coherence toward the goal.
+
+It therefore does **not** seek the naive shortest path.  
+It seeks the **most coherent low-distortion trajectory**.
+
+---
+
+## 5. Axioms
+
+### Axiom 1 — Coherence over naive distance
+A shorter path is not necessarily better if it crosses highly distorted or noisy regions.
+
+### Axiom 2 — Distortion matters
+Artifact-heavy regions alter effective traversal cost, either additively or geometrically.
+
+### Axiom 3 — Residual noise is directional interference
+Noise does not merely blur information; it destabilizes path reliability.
+
+### Axiom 4 — Goal-directedness must remain explicit
+A trajectory that avoids all distortion but loses the target is not optimal.
+
+### Axiom 5 — Optimality is contextual
+The best path depends on both geometry and semantic field structure.
+
+---
+
+## 6. Continuous Dynamical Form
+
+The same model can be expressed as a controlled trajectory equation:
+
+\[
+\frac{D}{dt}\dot\gamma(t)
+=
+-\nabla U(\gamma(t)) + \xi(t)
+\]
+
+with potential
+
+\[
+U(x) = \alpha A(x) + \beta R(x) - \mu K(x,x_g)
+\]
+
+and stochastic disturbance term \( \xi(t) \).
+
+### Interpretation
+
+- \( -\nabla U(x) \) pushes the system away from artifacts and noise,
+- \( K(x,x_g) \) pulls the system toward coherent goal alignment,
+- \( \xi(t) \) models real-world perturbation.
+
+This makes TERA usable not only as a static optimization principle, but as a **path-stabilization law in distorted decision fields**.
+
+---
+
+## 7. Discrete Graph Form
+
+For implementation on graphs, decision trees, retrieval systems, or search spaces, define the transition cost
+
+\[
+\mathrm{cost}(x_i,x_j)
+=
+d_G(x_i,x_j)
++
+\alpha A(x_j)
++
+\beta R(x_j)
+-
+\mu K(x_j,x_g)
+\]
+
+for each edge \(x_i \to x_j\).
+
+The optimal discrete path is then
+
+\[
+P^\*
+=
+\arg\min_{P}
+\sum_{(x_i,x_j)\in P}
+\mathrm{cost}(x_i,x_j)
+\]
+
+This formulation is directly compatible with:
+
+- Dijkstra
+- A*
+- beam search
+- ranking / retrieval pipelines
+- graph-based planning
+- semantic navigation over embeddings
+
+---
+
+## 8. Boundary Case
+
+If
+
+\[
+A(x)=0,\qquad R(x)=0,\qquad G(x)=I
+\]
+
+then TERA reduces to ordinary shortest-path logic.
+
+In continuous Euclidean space, the optimal path becomes the straight line between \(x_0\) and \(x_g\).
+
+This gives the base intuition:
+
+> TERA is not a rejection of shortest-path logic.  
+> It is a generalization of shortest-path logic to distorted semantic spaces.
+
+---
+
+## 9. Minimal Proposition
+
+### Proposition
+Let \(M\) be a flat Euclidean space with \(G=I\), and suppose \(A=R=0\).  
+Then the TERA-optimal path \( \gamma^\* \) is the classical geodesic between \(x_0\) and \(x_g\), i.e. the straight line.
+
+### Consequence
+Artifacts and residual noise are exactly the terms that explain why a seemingly direct path may become logically inferior.
+
+---
+
+## 10. Practical Reading
+
+In plain terms:
+
+- **Artifacts** distort the structure.
+- **Residual noise** destabilizes direction.
+- **Goal coherence** preserves intent.
+- **TERA** computes the path that stays most logically on-line through that field.
+
+Or more compactly:
+
+\[
+\text{TERA}
+=
+\arg\min_{\gamma}
+\int
+(
+\text{movement cost}
++
+\text{artifact load}
++
+\text{residual noise}
+-
+\text{goal coherence}
+)\,dt
+\]
+
+---
+
+## 11. One-Line Summary
+
+TERA describes AI-guided decision-making as geodesic vector-space navigation through a space distorted by artifacts and residual noise.
+
