@@ -1,0 +1,231 @@
+## Main Formula
+
+TERA evaluates whether an informational state is stable enough for commitment by combining:
+
+1. **anchored readability**
+2. **geodesic logical cost**
+3. **gate-based decision logic**
+
+### 1. Perspective Anchor
+
+Let
+
+\[
+a \in \mathbb{R}^n
+\]
+
+be the anchor (reference state), and let
+
+\[
+x \in \mathbb{R}^n
+\]
+
+be the current state.
+
+The anchored reading is
+
+\[
+r_a(x) = x - a
+\]
+
+This is the first condition of legibility:  
+without an anchor, there is only position;  
+with an anchor, there is direction, distance, and relational meaning.
+
+---
+
+### 2. Main TERA Functional
+
+Let
+
+- \(M\) be a state space,
+- \(x_0\) the current anchored state,
+- \(x_g\) the goal state,
+- \(\gamma : [0,1] \to M\) a candidate trajectory.
+
+Define the TERA cost functional as
+
+\[
+J[\gamma \mid a]
+=
+\int_0^1
+\left(
+\|\dot\gamma(t)\|_{G(\gamma(t))}^2
++
+\alpha A(\gamma(t))
++
+\beta R(\gamma(t))
+-
+\mu K_a(\gamma(t),x_g)
+\right)\,dt
+\]
+
+where
+
+- \(G(x)\) is the local geometry / movement cost,
+- \(A(x)\) is artifact load,
+- \(R(x)\) is residual noise,
+- \(K_a(x,x_g)\) is goal coherence measured relative to the anchor \(a\),
+- \(\alpha,\beta,\mu \ge 0\) are weighting parameters.
+
+### Interpretation
+
+TERA minimizes:
+
+- traversal cost,
+- artifact exposure,
+- residual noise,
+
+while maximizing:
+
+- anchor-aligned goal coherence.
+
+This means TERA does not ask for the naive shortest path.  
+It asks for the most coherent low-distortion trajectory relative to a readable reference.
+
+---
+
+### 3. Informational Tension Score
+
+For a current informational state \(b_n\), define a tension score
+
+\[
+s_n
+=
+\lambda_1 I(b_n)
++
+\lambda_2 \Delta I_n
++
+\lambda_3 J^\*_n
+\]
+
+with
+
+\[
+J^\*_n = \min_{\gamma} J[\gamma \mid a]
+\]
+
+where
+
+- \(I(b_n)\) is informational stress / uncertainty,
+- \(\Delta I_n\) is informational drift,
+- \(J^\*_n\) is the minimal anchored logical path cost.
+
+This gives one combined quantity describing whether the current state is readable, stable, and decision-worthy.
+
+---
+
+### 4. Gate Logic
+
+The TERA gate is defined by thresholds:
+
+\[
+\mathrm{Gate}(b_n)=
+\begin{cases}
+\mathrm{ACCEPT}, & s_n \le \tau_{\mathrm{acc}} \;\land\; \mathrm{Rob}_\Gamma(b_n)\ge \eta \\
+\mathrm{WAIT}, & \tau_{\mathrm{acc}} < s_n < \tau_{\mathrm{rej}} \\
+\mathrm{REJECT}, & s_n \ge \tau_{\mathrm{rej}} \;\lor\; \mathrm{Rob}_\Gamma(b_n)<\eta
+\end{cases}
+\]
+
+where
+
+- \(\tau_{\mathrm{acc}}\) is the acceptance threshold,
+- \(\tau_{\mathrm{rej}}\) is the rejection threshold,
+- \(\mathrm{Rob}_\Gamma(b_n)\) is robustness under admissible context variation \(\Gamma\),
+- \(\eta\) is the minimum admissible robustness level.
+
+---
+
+### 5. One-Line Reading
+
+TERA decides by asking whether an anchored informational state remains coherent enough, under drift, artifact load, residual noise, and context variation, to justify commitment.
+
+---
+
+### 6. Compact Summary
+
+\[
+\boxed{
+\text{Anchor} \to \text{Readable State} \to \text{Logical Cost} \to \text{Tension} \to \text{Gate}
+}
+\]
+
+or more explicitly:
+
+\[
+\boxed{
+r_a(x)=x-a
+\;\to\;
+J[\gamma \mid a]
+\;\to\;
+s_n
+\;\to\;
+
+## Main Formula
+
+TERA evaluates whether a current state is stable enough for commitment by combining:
+
+1. anchored readability
+2. logical path cost
+3. informational drift
+4. gate-based decision logic
+
+Let \(a\) be the anchor, \(x_n\) the current state, and \(x_g\) the goal state.
+
+### 1. Anchored Reading
+
+\[
+r_a(x_n) = x_n - a
+\]
+
+### 2. Minimal Logical Cost
+
+\[
+J_n^\* = \min_{\gamma : x_n \to x_g} J[\gamma \mid a]
+\]
+
+### 3. Normalized Tension Score
+
+\[
+\hat s_n
+=
+\lambda_1 \hat I(x_n)
++
+\lambda_2 \widehat{\Delta I}_n
++
+\lambda_3 \hat J_n^\*
+\]
+
+where all terms are normalized to a comparable scale.
+
+### 4. Gate
+
+\[
+\mathrm{Gate}(x_n)=
+\begin{cases}
+\mathrm{ACCEPT}, & \hat s_n \le \tau_{\mathrm{acc}} \land \mathrm{Rob}_\Gamma(x_n)\ge \eta \\
+\mathrm{WAIT}, & \tau_{\mathrm{acc}} < \hat s_n < \tau_{\mathrm{rej}} \\
+\mathrm{REJECT}, & \hat s_n \ge \tau_{\mathrm{rej}} \lor \mathrm{Rob}_\Gamma(x_n)<\eta
+\end{cases}
+\]
+\{\mathrm{ACCEPT},\mathrm{WAIT},\mathrm{REJECT}\}
+}
+\]
+
+This is the minimal TERA chain:
+from reference,
+to structure,
+to stability,
+to decision.
+
+
+
+\boxed{
+\hat s_n = \lambda_1 \hat I_n + \lambda_2 \widehat{\Delta I}_n + \lambda_3 \hat J_n^\*
+\quad\Longrightarrow\quad
+\mathrm{Gate}(x_n)\in\{\mathrm{ACCEPT},\mathrm{WAIT},\mathrm{REJECT}\}
+}
+
+
+
